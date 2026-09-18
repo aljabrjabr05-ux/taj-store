@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAJ Trade | منصة التداول التجريبية</title>
+<title>TAJ Trade - منصة التداول التجريبية</title>
 
 <style>
 *{box-sizing:border-box}
@@ -11,17 +11,18 @@
 body{
     margin:0;
     font-family:Arial,Tahoma,sans-serif;
-    background:#f4f7fb;
-    color:#172033;
+    background:#0b1220;
+    color:#fff;
 }
 
 header{
-    background:#ffffff;
-    border-bottom:1px solid #dfe5ee;
-    padding:14px 18px;
+    height:65px;
+    background:#111a2b;
+    border-bottom:1px solid #26334a;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
     position:sticky;
     top:0;
     z-index:10;
@@ -30,23 +31,130 @@ header{
 .logo{
     font-size:22px;
     font-weight:bold;
-    color:#0b6bcb;
+    color:#19d38a;
 }
 
 .demo{
-    background:#e8f3ff;
-    color:#0865bd;
-    padding:8px 12px;
+    background:#18263b;
+    color:#ffd166;
+    padding:8px 14px;
     border-radius:20px;
     font-size:13px;
-    font-weight:bold;
 }
 
 .container{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
-    padding:16px;
+    padding:18px;
 }
 
 .balance{
-    background:linear-gradient(135deg,#0878
+    background:linear-gradient(135deg,#122a3d,#123a35);
+    border:1px solid #214e4b;
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:18px;
+}
+
+.balance small{
+    color:#9eabc0;
+}
+
+.balance h1{
+    margin:8px 0;
+    font-size:32px;
+}
+
+.profit{
+    color:#19d38a;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1.6fr;
+    gap:18px;
+}
+
+.card{
+    background:#111a2b;
+    border:1px solid #26334a;
+    border-radius:14px;
+    padding:18px;
+}
+
+.card h2{
+    margin-top:0;
+    font-size:18px;
+}
+
+.market{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px;
+    background:#172236;
+    border-radius:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+
+.market:hover{
+    background:#1c2b43;
+}
+
+.symbol{
+    font-weight:bold;
+}
+
+.price{
+    font-size:18px;
+}
+
+.green{
+    color:#19d38a;
+}
+
+.red{
+    color:#ff5c70;
+}
+
+.chart{
+    height:330px;
+    background:#0c1422;
+    border-radius:10px;
+    position:relative;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+canvas{
+    width:100%;
+    height:100%;
+}
+
+.trade-box{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.trade-box label{
+    color:#9eabc0;
+    font-size:13px;
+}
+
+.trade-box input,
+.trade-box select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    background:#0c1422;
+    color:white;
+    border:1px solid #31415c;
+    border-radius:8px;
+    outline:none;
+}
+
+.buttons{
+    grid
