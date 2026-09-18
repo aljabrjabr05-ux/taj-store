@@ -6,266 +6,151 @@
 <title>TAJ Trade - لوحة الإدارة</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
- margin:0;
- font-family:Arial,Tahoma,sans-serif;
- background:#08111f;
- color:#fff;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#08111f;
+  color:#fff;
+  min-height:100vh;
 }
 
 header{
- background:#111a2b;
- border-bottom:1px solid #26334a;
- padding:16px 20px;
- display:flex;
- justify-content:space-between;
- align-items:center;
- position:sticky;
- top:0;
- z-index:10;
+  background:#111a2b;
+  border-bottom:1px solid #26334a;
+  padding:16px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
 
 .logo{
- color:#19d38a;
- font-size:24px;
- font-weight:bold;
+  color:#19d38a;
+  font-size:24px;
+  font-weight:bold;
 }
 
-.admin{
- background:#18263b;
- padding:10px 16px;
- border-radius:20px;
- color:#19d38a;
- font-weight:bold;
+.admin-badge{
+  background:#18263b;
+  color:#19d38a;
+  padding:10px 16px;
+  border-radius:20px;
+  font-weight:bold;
 }
 
 .container{
- max-width:1150px;
- margin:auto;
- padding:18px;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
 }
 
 h1{
- margin-top:5px;
+  margin-bottom:6px;
 }
 
-.grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:15px;
+.subtitle{
+  color:#9aa9bd;
+  margin-bottom:20px;
 }
 
-.card{
- background:#111a2b;
- border:1px solid #26334a;
- border-radius:16px;
- padding:18px;
- margin-bottom:18px;
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:20px;
 }
 
 .stat{
- font-size:28px;
- font-weight:bold;
- margin-top:10px;
+  background:#111a2b;
+  border:1px solid #26334a;
+  border-radius:16px;
+  padding:20px;
+}
+
+.stat-title{
+  color:#9aa9bd;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.stat-value{
+  font-size:27px;
+  font-weight:bold;
 }
 
 .green{color:#19d38a}
 .red{color:#ff5577}
+.yellow{color:#f5c451}
 .gray{color:#aeb9ca}
 
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:#111a2b;
+  border:1px solid #26334a;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.card h2{
+  font-size:19px;
+  margin-bottom:18px;
+}
+
 .tabs{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- margin-bottom:15px;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  margin-bottom:20px;
 }
 
-button{
- border:0;
- border-radius:10px;
- padding:11px 15px;
- cursor:pointer;
- font-weight:bold;
- background:#24344f;
- color:white;
+.tab{
+  border:1px solid #26334a;
+  background:#111a2b;
+  color:#fff;
+  padding:11px 17px;
+  border-radius:10px;
+  cursor:pointer;
+  white-space:nowrap;
 }
 
-button:hover{
- opacity:.85;
+.tab.active{
+  background:#19d38a;
+  color:#061018;
+  border-color:#19d38a;
 }
 
-.primary{background:#19d38a;color:#06131c}
-.danger{background:#ff5577;color:white}
-.warning{background:#f0a83a;color:#111}
+.section{
+  display:none;
+}
 
-input,select{
- width:100%;
- padding:12px;
- margin:6px 0 12px;
- border:1px solid #33445f;
- border-radius:10px;
- background:#0c1728;
- color:white;
+.section.active{
+  display:block;
 }
 
 table{
- width:100%;
- border-collapse:collapse;
+  width:100%;
+  border-collapse:collapse;
 }
 
 th,td{
- padding:12px 8px;
- border-bottom:1px solid #26334a;
- text-align:right;
+  padding:13px 8px;
+  border-bottom:1px solid #26334a;
+  text-align:right;
 }
 
-.badge{
- padding:5px 9px;
- border-radius:15px;
- background:#18263b;
- font-size:12px;
-}
-
-.notice{
- background:#18263b;
- border-right:4px solid #19d38a;
- padding:14px;
- border-radius:10px;
- margin-bottom:18px;
-}
-
-.actions{
- display:flex;
- gap:7px;
- flex-wrap:wrap;
-}
-
-@media(max-width:800px){
- .grid{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:520px){
- .grid{grid-template-columns:1fr}
- th,td{font-size:13px}
-}
-</style>
-</head>
-
-<body>
-
-<header>
- <div class="logo">TAJ Trade</div>
- <div class="admin">لوحة الإدارة</div>
-</header>
-
-<div class="container">
-
-<div class="notice">
- <b>لوحة تحكم تجريبية</b><br>
- هذه النسخة تعمل محليًا داخل المتصفح باستخدام LocalStorage.
- لا تستخدمها لإدارة أموال حقيقية.
-</div>
-
-<h1>لوحة التحكم</h1>
-
-<div class="grid">
-
-<div class="card">
- <div class="gray">رصيد المستخدم</div>
- <div class="stat green" id="balanceStat">$10,000.00</div>
-</div>
-
-<div class="card">
- <div class="gray">قيمة المحفظة</div>
- <div class="stat" id="walletStat">$10,000.00</div>
-</div>
-
-<div class="card">
- <div class="gray">الأرباح والخسائر</div>
- <div class="stat green" id="profitStat">$0.00</div>
-</div>
-
-<div class="card">
- <div class="gray">المكافآت</div>
- <div class="stat" id="rewardStat">$0.00</div>
-</div>
-
-</div>
-
-<div class="tabs">
- <button onclick="showSection('account')">الحساب</button>
- <button onclick="showSection('money')">الإيداع والسحب</button>
- <button onclick="showSection('trades')">التداول</button>
- <button onclick="showSection('rewards')">المكافآت</button>
- <button onclick="showSection('history')">السجل</button>
-</div>
-
-<!-- الحساب -->
-
-<section id="account" class="card">
-
-<h2>👤 إدارة الحساب</h2>
-
-<label>اسم المستخدم</label>
-<input id="username" value="عميل تجريبي">
-
-<label>البريد الإلكتروني</label>
-<input id="email" value="user@example.com">
-
-<label>حالة الحساب</label>
-<select id="status">
-<option>نشط</option>
-<option>موقوف</option>
-<option>مراجعة</option>
-</select>
-
-<button class="primary" onclick="saveAccount()">حفظ بيانات الحساب</button>
-
-</section>
-
-<!-- المال -->
-
-<section id="money" class="card" style="display:none">
-
-<h2>💰 التحكم بالرصيد</h2>
-
-<label>المبلغ</label>
-<input id="amount" type="number" placeholder="مثال: 500">
-
-<div class="actions">
-
-<button class="primary" onclick="deposit()">
-+ إضافة إيداع
-</button>
-
-<button class="danger" onclick="withdraw()">
-- خصم / سحب
-</button>
-
-</div>
-
-<hr style="border-color:#26334a;margin:20px 0">
-
-<h3>تعديل مباشر للرصيد</h3>
-
-<input id="newBalance" type="number">
-
-<button class="warning" onclick="setBalance()">
-تعيين الرصيد
-</button>
-
-</section>
-
-<!-- التداول -->
-
-<section id="trades" class="card" style="display:none">
-
-<h2>📈 صفقة تجريبية</h2>
-
-<label>الأصل</label>
-
-<select id="asset">
-<option>BTC/USD</option>
-<option>ETH/USD</
+th{
+  color:#9aa9bd;
+  font
