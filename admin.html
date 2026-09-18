@@ -740,7 +740,79 @@ return text
 
 }
 
-</script>
+/* ===== TAJ TRADE DEMO STORAGE ===== */
+
+const TAJ_STORAGE_KEY = "taj_trade_demo_v1";
+
+function getTAJData() {
+  try {
+    return JSON.parse(localStorage.getItem(TAJ_STORAGE_KEY)) || {
+      users: {},
+      transactions: []
+    };
+  } catch (e) {
+    return {
+      users: {},
+      transactions: []
+    };
+  }
+}
+
+function saveTAJData(data) {
+  localStorage.setItem(TAJ_STORAGE_KEY, JSON.stringify(data));
+}
+
+function getTAJUser(username) {
+  const data = getTAJData();
+
+  if (!data.users[username]) {
+    data.users[username] = {
+      username: username,
+      balance: 10000,
+      profit: 0,
+      trades: 0
+    };
+
+    saveTAJData(data);
+  }
+
+  return data.users[username];
+}
+
+function updateTAJUser(username, changes) {
+  const data = getTAJData();
+
+  if (!data.users[username]) {
+    data.users[username] = {
+      username: username,
+      balance: 10000,
+      profit: 0,
+      trades: 0
+    };
+  }
+
+  Object.assign(data.users[username], changes);
+
+  saveTAJData(data);
+
+  return data.users[username];
+}
+
+function addTAJTransaction(username, type, amount) {
+  const data = getTAJData();
+
+  data.transactions.unshift({
+    id: Date.now(),
+    username: username,
+    type: type,
+    amount: Number(amount),
+    date: new Date().toLocaleString("ar-SA")
+  });
+
+  saveTAJData(data);
+}
+
+console.log("TAJ Trade Demo Storage Ready");/script>
 
 </body>
 </html>
