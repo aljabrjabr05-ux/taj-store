@@ -14,15 +14,14 @@
 
 body{
   font-family:Arial,Tahoma,sans-serif;
-  background:#080f17;
+  background:#070b12;
   color:#fff;
-  min-height:100vh;
 }
 
 header{
-  background:#111a2b;
+  background:#111827;
   border-bottom:1px solid #26334a;
-  padding:15px 22px;
+  padding:16px 22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -52,7 +51,7 @@ header{
 }
 
 h1{
-  margin-bottom:5px;
+  margin-bottom:6px;
 }
 
 .subtitle{
@@ -68,7 +67,7 @@ h1{
 }
 
 .stat{
-  background:#111a2b;
+  background:#111827;
   border:1px solid #26334a;
   border-radius:16px;
   padding:20px;
@@ -80,52 +79,21 @@ h1{
 }
 
 .stat-value{
-  font-size:26px;
+  font-size:28px;
   font-weight:bold;
   margin-top:10px;
 }
 
-.green{
-  color:#19d38a;
-}
+.green{color:#19d38a}
+.red{color:#ff5577}
+.gray{color:#aeb9ca}
 
-.red{
-  color:#ff5577;
-}
-
-.yellow{
-  color:#ffc857;
-}
-
-.blue{
-  color:#58a6ff;
-}
-
-.tabs{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  margin-bottom:15px;
-}
-
-.tabs button{
-  background:#111a2b;
-  color:#fff;
-  border:1px solid #26334a;
-  padding:12px 18px;
-  border-radius:10px;
-  cursor:pointer;
-  white-space:nowrap;
-}
-
-.tabs button.active,
-.tabs button:hover{
-  background:#19d38a;
-  color:#06120d;
+.section{
+  margin-bottom:20px;
 }
 
 .card{
-  background:#111a2b;
+  background:#111827;
   border:1px solid #26334a;
   border-radius:16px;
   padding:20px;
@@ -133,7 +101,29 @@ h1{
 }
 
 .card h2{
-  margin-bottom:15px;
+  margin-bottom:18px;
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.tabs button{
+  border:1px solid #26334a;
+  background:#18263b;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.tabs button.active{
+  background:#19d38a;
+  color:#06100b;
+  font-weight:bold;
 }
 
 .table-wrap{
@@ -147,35 +137,28 @@ table{
 }
 
 th,td{
-  padding:13px;
-  text-align:right;
+  padding:14px 12px;
   border-bottom:1px solid #26334a;
+  text-align:right;
 }
 
 th{
   color:#9aa9bd;
-  font-size:14px;
+  background:#0d1420;
 }
 
 input,select{
   width:100%;
-  background:#080f17;
+  background:#0b111c;
+  border:1px solid #33425a;
   color:#fff;
-  border:1px solid #34435c;
-  border-radius:9px;
   padding:12px;
-  margin-top:7px;
+  border-radius:9px;
   outline:none;
 }
 
 input:focus,select:focus{
   border-color:#19d38a;
-}
-
-label{
-  display:block;
-  margin-bottom:15px;
-  color:#cbd5e1;
 }
 
 .form-grid{
@@ -184,9 +167,15 @@ label{
   gap:15px;
 }
 
-button{
-  border:0;
-  padding:11px 16px;
+label{
+  display:block;
+  color:#b9c4d4;
+  margin-bottom:7px;
+}
+
+.btn{
+  border:none;
+  padding:11px 17px;
   border-radius:9px;
   cursor:pointer;
   font-weight:bold;
@@ -194,7 +183,7 @@ button{
 
 .primary{
   background:#19d38a;
-  color:#06120d;
+  color:#06100b;
 }
 
 .danger{
@@ -203,8 +192,8 @@ button{
 }
 
 .warning{
-  background:#ffc857;
-  color:#161000;
+  background:#f5b942;
+  color:#111;
 }
 
 .secondary{
@@ -212,56 +201,48 @@ button{
   color:#fff;
 }
 
-.small-btn{
-  padding:7px 10px;
-  font-size:12px;
-}
-
 .badge{
   display:inline-block;
-  padding:6px 10px;
-  border-radius:15px;
+  padding:5px 9px;
+  border-radius:20px;
   font-size:12px;
   font-weight:bold;
 }
 
 .badge-green{
-  background:#123d2d;
+  background:#123d2e;
   color:#19d38a;
 }
 
 .badge-red{
-  background:#451d29;
+  background:#451b28;
   color:#ff5577;
 }
 
 .badge-yellow{
-  background:#443719;
-  color:#ffc857;
+  background:#443716;
+  color:#f5c84b;
+}
+
+.actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
 }
 
 .notice{
-  background:#10253a;
-  border:1px solid #245176;
-  color:#9ed0ff;
-  padding:15px;
-  border-radius:12px;
-  margin-bottom:20px;
-  line-height:1.7;
+  padding:14px;
+  background:#0d1726;
+  border:1px solid #26334a;
+  border-radius:10px;
+  color:#9aa9bd;
+  margin-top:15px;
 }
 
-.section{
-  display:none;
-}
-
-.section.active{
-  display:block;
-}
-
-.footer{
+.empty{
   text-align:center;
-  color:#718096;
   padding:30px;
+  color:#78869b;
 }
 
 @media(max-width:800px){
@@ -272,9 +253,15 @@ button{
   .form-grid{
     grid-template-columns:1fr;
   }
+}
+
+@media(max-width:500px){
+  .stats{
+    grid-template-columns:1fr;
+  }
 
   header{
-    padding:13px;
+    padding:14px;
   }
 
   .container{
@@ -282,18 +269,7 @@ button{
   }
 
   .stat-value{
-    font-size:21px;
-  }
-}
-
-@media(max-width:480px){
-  .stats{
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-
-  .stat{
-    padding:14px;
+    font-size:23px;
   }
 }
 </style>
@@ -303,40 +279,36 @@ button{
 
 <header>
   <div class="logo">TAJ Trade</div>
-  <div class="admin-badge">🛡️ لوحة الإدارة</div>
+  <div class="admin-badge">👑 لوحة الإدارة</div>
 </header>
 
-<div class="container">
+<main class="container">
 
 <h1>لوحة التحكم</h1>
-<p class="subtitle">إدارة المنصة والحسابات والعمليات</p>
-
-<div class="notice">
-  ⚠️ هذه نسخة تجريبية Demo. البيانات الموجودة هنا محلية داخل المتصفح وليست نظام تداول مالي حقيقي.
-</div>
+<p class="subtitle">إدارة المنصة التجريبية والمستخدمين والعمليات</p>
 
 <!-- الإحصائيات -->
 
 <div class="stats">
 
 <div class="stat">
-  <div class="stat-title">👥 المستخدمون</div>
-  <div class="stat-value blue" id="usersCount">1,248</div>
+<div class="stat-title">إجمالي المستخدمين</div>
+<div class="stat-value" id="usersCount">128</div>
 </div>
 
 <div class="stat">
-  <div class="stat-title">💰 إجمالي الأرصدة</div>
-  <div class="stat-value green" id="balanceTotal">$284,560</div>
+<div class="stat-title">المستخدمون النشطون</div>
+<div class="stat-value green" id="activeCount">96</div>
 </div>
 
 <div class="stat">
-  <div class="stat-title">📈 الصفقات اليوم</div>
-  <div class="stat-value yellow" id="tradesCount">386</div>
+<div class="stat-title">إجمالي الإيداعات</div>
+<div class="stat-value">$24,850</div>
 </div>
 
 <div class="stat">
-  <div class="stat-title">💵 الأرباح</div>
-  <div class="stat-value green" id="profitTotal">$18,420</div>
+<div class="stat-title">عمليات اليوم</div>
+<div class="stat-value">47</div>
 </div>
 
 </div>
@@ -344,79 +316,11 @@ button{
 <!-- التبويبات -->
 
 <div class="tabs">
-
-<button class="active" onclick="showSection('dashboard',this)">
-الرئيسية
-</button>
-
-<button onclick="showSection('users',this)">
-المستخدمون
-</button>
-
-<button onclick="showSection('money',this)">
-الأموال
-</button>
-
-<button onclick="showSection('trades',this)">
-الصفقات
-</button>
-
-<button onclick="showSection('settings',this)">
-الإعدادات
-</button>
-
+<button class="active" onclick="showSection('users',this)">👥 المستخدمون</button>
+<button onclick="showSection('money',this)">💰 الأموال</button>
+<button onclick="showSection('trades',this)">📈 التداولات</button>
+<button onclick="showSection('settings',this)">⚙️ الإعدادات</button>
 </div>
-
-
-<!-- الرئيسية -->
-
-<section id="dashboard" class="section active">
-
-<div class="card">
-
-<h2>📊 ملخص المنصة</h2>
-
-<div class="table-wrap">
-
-<table>
-
-<tr>
-<th>المؤشر</th>
-<th>القيمة</th>
-<th>الحالة</th>
-</tr>
-
-<tr>
-<td>حالة المنصة</td>
-<td>Online</td>
-<td><span class="badge badge-green">نشطة</span></td>
-</tr>
-
-<tr>
-<td>السوق</td>
-<td>Demo Market</td>
-<td><span class="badge badge-green">يعمل</span></td>
-</tr>
-
-<tr>
-<td>عمليات الإيداع</td>
-<td>42 اليوم</td>
-<td><span class="badge badge-green">طبيعي</span></td>
-</tr>
-
-<tr>
-<td>عمليات السحب</td>
-<td>17 اليوم</td>
-<td><span class="badge badge-yellow">مراجعة</span></td>
-</tr>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
 
 
 <!-- المستخدمون -->
@@ -427,30 +331,9 @@ button{
 
 <h2>👥 إدارة المستخدمين</h2>
 
-<div class="form-grid">
-
-<label>
-بحث عن مستخدم
-<input id="userSearch" type="text"
-placeholder="اسم المستخدم أو البريد"
-onkeyup="searchUsers()">
-</label>
-
-<label>
-حالة الحساب
-<select>
-<option>جميع الحسابات</option>
-<option>نشط</option>
-<option>موقوف</option>
-<option>معلق</option>
-</select>
-</label>
-
-</div>
-
 <div class="table-wrap">
 
-<table id="usersTable">
+<table>
 
 <thead>
 <tr>
@@ -467,52 +350,42 @@ onkeyup="searchUsers()">
 <tr>
 <td>أحمد محمد</td>
 <td>ahmed@example.com</td>
-<td>$8,450</td>
-<td><span class="badge badge-green">نشط</span></td>
+<td>$1,950</td>
 <td>
-<button class="danger small-btn"
-onclick="toggleUser(this)">
-إيقاف
-</button>
+<span class="badge badge-green">نشط</span>
+</td>
+<td>
+<div class="actions">
+<button class="btn warning" onclick="toggleUser(this)">تعطيل</button>
+</div>
 </td>
 </tr>
 
 <tr>
 <td>محمد علي</td>
 <td>mohamed@example.com</td>
-<td>$3,280</td>
-<td><span class="badge badge-green">نشط</span></td>
+<td>$3,420</td>
 <td>
-<button class="danger small-btn"
-onclick="toggleUser(this)">
-إيقاف
-</button>
+<span class="badge badge-green">نشط</span>
 </td>
-</tr>
-
-<tr>
-<td>سارة أحمد</td>
-<td>sara@example.com</td>
-<td>$12,700</td>
-<td><span class="badge badge-yellow">معلق</span></td>
 <td>
-<button class="primary small-btn"
-onclick="toggleUser(this)">
-تفعيل
-</button>
+<div class="actions">
+<button class="btn danger" onclick="toggleUser(this)">تعطيل</button>
+</div>
 </td>
 </tr>
 
 <tr>
 <td>خالد حسن</td>
 <td>khaled@example.com</td>
-<td>$1,950</td>
-<td><span class="badge badge-green">نشط</span></td>
+<td>$850</td>
 <td>
-<button class="danger small-btn"
-onclick="toggleUser(this)">
-إيقاف
-</button>
+<span class="badge badge-yellow">مراجعة</span>
+</td>
+<td>
+<div class="actions">
+<button class="btn primary" onclick="approveUser(this)">موافقة</button>
+</div>
 </td>
 </tr>
 
@@ -529,65 +402,345 @@ onclick="toggleUser(this)">
 
 <!-- الأموال -->
 
-<section id="money" class="section">
+<section id="money" class="section" style="display:none">
 
 <div class="card">
 
-<h2>💰 إدارة الأموال</h2>
+<h2>💰 إدارة الأموال التجريبية</h2>
 
 <div class="form-grid">
 
-<label>
-المستخدم
-<input id="moneyUser"
-placeholder="اسم المستخدم">
-</label>
+<div>
+<label>اسم المستخدم</label>
+<input id="moneyUser" placeholder="مثال: أحمد محمد">
+</div>
 
-<label>
-المبلغ
-<input id="moneyAmount"
-type="number"
-placeholder="500">
-</label>
+<div>
+<label>المبلغ</label>
+<input id="moneyAmount" type="number" placeholder="500">
+</div>
 
 </div>
 
 <br>
 
-<button class="primary" onclick="deposit()">
+<button class="btn primary" onclick="deposit()">
 ➕ إضافة رصيد
 </button>
 
-<button class="danger" onclick="withdraw()">
+<button class="btn danger" onclick="withdraw()">
 ➖ خصم رصيد
 </button>
+
+<div class="notice">
+هذه العمليات مخصصة للنسخة التجريبية فقط ولا تمثل أموالًا حقيقية.
+</div>
 
 </div>
 
 
 <div class="card">
 
-<h2>🧾 آخر العمليات</h2>
+<h2>آخر العمليات</h2>
 
 <div class="table-wrap">
 
-<table id="moneyTable">
+<table>
 
+<thead>
 <tr>
 <th>المستخدم</th>
-<th>العملية</th>
+<th>النوع</th>
 <th>المبلغ</th>
 <th>التاريخ</th>
 </tr>
+</thead>
+
+<tbody id="moneyTable">
 
 <tr>
 <td>أحمد محمد</td>
-<td class="green">إيداع</td>
-<td class="green">+$500</td>
+<td><span class="badge badge-green">إيداع</span></td>
+<td>$500</td>
 <td>اليوم</td>
 </tr>
 
 <tr>
 <td>محمد علي</td>
-<td class="red">سحب</td>
-<td class="red">-$250
+<td><span class="badge badge-red">خصم</span></td>
+<td>$150</td>
+<td>اليوم</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- التداولات -->
+
+<section id="trades" class="section" style="display:none">
+
+<div class="card">
+
+<h2>📈 سجل التداولات</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>المستخدم</th>
+<th>الأصل</th>
+<th>النوع</th>
+<th>الحجم</th>
+<th>النتيجة</th>
+<th>الحالة</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>أحمد محمد</td>
+<td>BTC/USD</td>
+<td>شراء</td>
+<td>$500</td>
+<td class="green">+$42</td>
+<td>
+<span class="badge badge-green">مغلقة</span>
+</td>
+</tr>
+
+<tr>
+<td>محمد علي</td>
+<td>ETH/USD</td>
+<td>بيع</td>
+<td>$750</td>
+<td class="red">-$31</td>
+<td>
+<span class="badge badge-green">مغلقة</span>
+</td>
+</tr>
+
+<tr>
+<td>خالد حسن</td>
+<td>BTC/USD</td>
+<td>شراء</td>
+<td>$300</td>
+<td class="gray">$0</td>
+<td>
+<span class="badge badge-yellow">مفتوحة</span>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- الإعدادات -->
+
+<section id="settings" class="section" style="display:none">
+
+<div class="card">
+
+<h2>⚙️ إعدادات المنصة</h2>
+
+<div class="form-grid">
+
+<div>
+<label>اسم المنصة</label>
+<input id="platformName" value="TAJ Trade">
+</div>
+
+<div>
+<label>العملة</label>
+<select id="currency">
+<option>USD - دولار</option>
+<option>EUR - يورو</option>
+<option>TRY - ليرة تركية</option>
+</select>
+</div>
+
+<div>
+<label>حالة التداول</label>
+<select id="tradingStatus">
+<option>مفتوح</option>
+<option>متوقف</option>
+</select>
+</div>
+
+<div>
+<label>وضع المنصة</label>
+<select>
+<option>تجريبي Demo</option>
+<option>اختبار</option>
+</select>
+</div>
+
+</div>
+
+<br>
+
+<button class="btn primary" onclick="saveSettings()">
+💾 حفظ الإعدادات
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+
+function showSection(id,button){
+
+document.querySelectorAll('.section').forEach(function(section){
+section.style.display='none';
+});
+
+document.getElementById(id).style.display='block';
+
+document.querySelectorAll('.tabs button').forEach(function(btn){
+btn.classList.remove('active');
+});
+
+button.classList.add('active');
+
+}
+
+
+function toggleUser(button){
+
+let row=button.closest('tr');
+let status=row.children[3];
+
+if(status.innerText.includes('نشط')){
+
+status.innerHTML='<span class="badge badge-red">متوقف</span>';
+button.innerText='تفعيل';
+button.className='btn primary';
+
+}else{
+
+status.innerHTML='<span class="badge badge-green">نشط</span>';
+button.innerText='تعطيل';
+button.className='btn warning';
+
+}
+
+}
+
+
+function approveUser(button){
+
+let row=button.closest('tr');
+
+row.children[3].innerHTML=
+'<span class="badge badge-green">نشط</span>';
+
+button.innerText='تعطيل';
+button.className='btn warning';
+
+button.onclick=function(){
+toggleUser(this);
+};
+
+}
+
+
+function deposit(){
+
+let user=document.getElementById('moneyUser').value.trim();
+let amount=Number(document.getElementById('moneyAmount').value);
+
+if(!user || amount<=0){
+alert('أدخل اسم المستخدم والمبلغ بشكل صحيح');
+return;
+}
+
+let table=document.getElementById('moneyTable');
+
+let row=table.insertRow(0);
+
+row.innerHTML=
+'<td>'+escapeHTML(user)+'</td>'+
+'<td><span class="badge badge-green">إيداع</span></td>'+
+'<td>$'+amount.toLocaleString()+'</td>'+
+'<td>الآن</td>';
+
+alert('تمت إضافة الرصيد التجريبي بنجاح');
+
+}
+
+
+function withdraw(){
+
+let user=document.getElementById('moneyUser').value.trim();
+let amount=Number(document.getElementById('moneyAmount').value);
+
+if(!user || amount<=0){
+alert('أدخل اسم المستخدم والمبلغ بشكل صحيح');
+return;
+}
+
+let table=document.getElementById('moneyTable');
+
+let row=table.insertRow(0);
+
+row.innerHTML=
+'<td>'+escapeHTML(user)+'</td>'+
+'<td><span class="badge badge-red">خصم</span></td>'+
+'<td>$'+amount.toLocaleString()+'</td>'+
+'<td>الآن</td>';
+
+alert('تم خصم الرصيد التجريبي بنجاح');
+
+}
+
+
+function saveSettings(){
+
+let name=document.getElementById('platformName').value;
+
+if(!name){
+alert('أدخل اسم المنصة');
+return;
+}
+
+alert('تم حفظ إعدادات المنصة التجريبية');
+
+}
+
+
+function escapeHTML(text){
+
+return text
+.replace(/&/g,'&amp;')
+.replace(/</g,'&lt;')
+.replace(/>/g,'&gt;')
+.replace(/"/g,'&quot;')
+.replace(/'/g,'&#039;');
+
+}
+
+</script>
+
+</body>
+</html>
