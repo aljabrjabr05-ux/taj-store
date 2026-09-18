@@ -3,158 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAJ Trade - منصة التداول التجريبية</title>
+<title>TAJ Trade</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-    margin:0;
-    font-family:Arial,Tahoma,sans-serif;
-    background:#0b1220;
-    color:#fff;
+* {
+    box-sizing: border-box;
 }
 
-header{
-    height:65px;
-    background:#111a2b;
-    border-bottom:1px solid #26334a;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 20px;
-    position:sticky;
-    top:0;
-    z-index:10;
+body {
+    margin: 0;
+    font-family: Arial, Tahoma, sans-serif;
+    background: #0b1220;
+    color: #ffffff;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#19d38a;
+header {
+    background: #111a2b;
+    border-bottom: 1px solid #26334a;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-.demo{
-    background:#18263b;
-    color:#ffd166;
-    padding:8px 14px;
-    border-radius:20px;
-    font-size:13px;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #19d38a;
 }
 
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:18px;
+.demo {
+    background: #18263b;
+    color: #19d38a;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
-.balance{
-    background:linear-gradient(135deg,#122a3d,#123a35);
-    border:1px solid #214e4b;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:18px;
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px;
 }
 
-.balance small{
-    color:#9eabc0;
+.balance {
+    background: linear-gradient(135deg, #122a3d, #123a35);
+    border: 1px solid #214e4b;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 18px;
 }
 
-.balance h1{
-    margin:8px 0;
-    font-size:32px;
+.balance small {
+    color: #9eabc0;
 }
 
-.profit{
-    color:#19d38a;
+.balance h1 {
+    margin: 8px 0;
+    font-size: 32px;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1.6fr;
-    gap:18px;
+.profit {
+    color: #19d38a;
 }
 
-.card{
-    background:#111a2b;
-    border:1px solid #26334a;
-    border-radius:14px;
-    padding:18px;
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 18px;
 }
 
-.card h2{
-    margin-top:0;
-    font-size:18px;
+.card {
+    background: #111a2b;
+    border: 1px solid #26334a;
+    border-radius: 14px;
+    padding: 18px;
 }
 
-.market{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:14px;
-    background:#172236;
-    border-radius:10px;
-    margin-bottom:10px;
-    cursor:pointer;
+.card h2 {
+    margin-top: 0;
+    font-size: 18px;
 }
 
-.market:hover{
-    background:#1c2b43;
+.market {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    background: #172236;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.symbol{
-    font-weight:bold;
+.market:hover {
+    background: #1c2b43;
 }
 
-.price{
-    font-size:18px;
+.symbol {
+    font-weight: bold;
 }
 
-.green{
-    color:#19d38a;
+.price {
+    font-size: 18px;
 }
 
-.red{
-    color:#ff5c70;
+.green {
+    color: #19d38a;
 }
 
-.chart{
-    height:330px;
-    background:#0c1422;
-    border-radius:10px;
-    position:relative;
-    overflow:hidden;
-    margin-top:15px;
+.red {
+    color: #ff5c70;
 }
 
-canvas{
-    width:100%;
-    height:100%;
+.chart {
+    height: 260px;
+    background:
+        linear-gradient(#18263b 1px, transparent 1px),
+        linear-gradient(90deg, #18263b 1px, transparent 1px);
+    background-size: 40px 40px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 16px;
 }
 
-.trade-box{
-    margin-top:18px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
+.line {
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    top: 45%;
+    height: 3px;
+    background: #19d38a;
+    transform: rotate(-5deg);
+    box-shadow: 0 0 10px #19d38a;
 }
 
-.trade-box label{
-    color:#9eabc0;
-    font-size:13px;
+.trade-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
-.trade-box input,
-.trade-box select{
-    width:100%;
-    padding:12px;
-    margin-top:6px;
-    background:#0c1422;
-    color:white;
-    border:1px solid #31415c;
-    border-radius:8px;
-    outline:none;
+button {
+    border: 0;
+    padding: 14px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.buttons{
-    grid
+.buy {
+    background: #12a875;
+}
+
+.sell {
+    background: #d94b5f;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    background: #0b1220;
+    color: white;
+    border: 1px solid #26334a;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.orders {
+    margin-top: 18px;
+}
+
+.order {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #26334a;
+}
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">TAJ TRADE</div>
+    <div class="demo">حساب تجريبي</div>
+</header>
+
+<div class="container">
+
+    <div class="balance">
+        <small>الرصيد التجريبي</small>
+        <h1 id="balance">$10,000.00</h1>
+        <div class="profit">+ $0.00 اليوم</div>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>الأسواق</h2>
+
+            <div class="market" onclick="selectMarket('BTC/USD', 67250)">
+                <span class="symbol">BTC/USD</span>
+                <span class="price">$67,250</span>
+            </div>
+
+            <div class="market" onclick="selectMarket('ETH/USD', 3450)">
+                <span class="symbol">ETH/USD</span>
+                <span class="price">$3,450</span>
+            </div>
+
+            <div class="market" onclick="selectMarket('EUR/USD', 1.17)">
+                <span class="symbol">EUR/USD</span>
+                <span class="price">1.1700</span>
+            </div>
+
+            <div class="market" onclick="selectMarket('GOLD/USD', 3650)">
+                <span class="symbol">GOLD/USD</span>
+                <span class="price">$3,650</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 id="selected">BTC/USD</h2>
+
+            <div class="chart">
+                <div class="line"></div>
+            </div>
+
+            <input id="amount" type="number" placeholder="مبلغ الصفقة" value="100">
+
+            <div class="trade-box">
+                <button class="buy" onclick="trade('شراء')">شراء</button>
+                <button class="sell" onclick="trade('بيع')">بيع</button>
+            </div>
+
+            <div class="orders">
+                <h2>الصفقات</h2>
+                <div id="orders">
+                    <div class="order">
+                        <span>لا توجد صفقات</span>
+                        <span>—</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+let balance = 10000;
+let market = "BTC/USD";
+
+function selectMarket(name, price) {
+    market = name;
+    document.getElementById("selected").innerText = name;
+}
+
+function trade(type) {
+    const amount = Number(document.getElementById("amount").value);
+
+    if (!amount || amount <= 0) {
+        alert("أدخل مبلغ الصفقة");
+        return;
+    }
+
+    if (amount > balance) {
+        alert("الرصيد التجريبي غير كافٍ");
+        return;
+    }
+
+    balance -= amount;
+
+    document.getElementById("balance").innerText =
+        "$" + balance.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+    const orders = document.getElementById("orders");
+
+    const order = document.createElement("div");
+    order.className = "order";
+
+    order.innerHTML =
+        "<span>" + type + " " + market + "</span>" +
+        "<span>$" + amount.toFixed(2) + "</span>";
+
+    orders.prepend(order);
+}
+</script>
+
+</body>
+</html>
