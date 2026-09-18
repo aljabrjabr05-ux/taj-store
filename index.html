@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>منصة التداول التجريبية</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#07111f;
+  color:#fff;
+}
+header{
+  height:65px;
+  background:#0d1b2a;
+  border-bottom:1px solid #26384d;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+}
+.logo{
+  font-size:20px;
+  font-weight:bold;
+  color:#35d0a1;
+}
+.balance{
+  background:#12243a;
+  padding:10px 15px;
+  border-radius:10px;
+}
+.container{padding:15px}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:15px;
+}
+.card{
+  background:#0d1b2a;
+  border:1px solid #26384d;
+  border-radius:12px;
+  padding:15px;
+}
+.card small{color:#91a4b8}
+.card strong{
+  display:block;
+  margin-top:8px;
+  font-size:20px;
+}
+
+.main{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:15px;
+}
+
+.panel{
+  background:#0d1b2a;
+  border:1px solid #26384d;
+  border-radius:12px;
+  padding:15px;
+}
+
+.panel h3{
+  margin-top:0;
+}
+
+.market{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+
+.market button{
+  background:#12243a;
+  color:white;
+  border:1px solid #30465e;
+  padding:9px 15px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.market button.active{
+  background:#35d0a1;
+  color:#06151a;
+}
+
+.price{
+  font-size:32px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+.up{color:#35d0a1}
+.down{color:#ff5c6c}
+
+.chart{
+  height:300px;
+  background:#081522;
+  border-radius:10px;
+  border:1px solid #203449;
+  position:relative;
+  overflow:hidden;
+}
+
+.grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(#ffffff08 1px,transparent 1px),
+    linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+  background-size:40px 40px;
+}
+
+canvas{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.order-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.order-tabs button{
+  flex:1;
+  padding:10px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  background:#182d43;
+  color:white;
+}
+
+.order-tabs .buy{
+  background:#168f72;
+}
+
+.order-tabs .sell{
+  background:#b63d50;
+}
+
+label{
+  display:block;
+  color:#91a4b8;
+  margin:10px 0 5px;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  background:#081522;
+  color:#fff;
+  border:1px solid #30465e;
+  border-radius:8px;
+}
+
+.trade-btn{
+  width:100%;
+  margin-top:15px;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  background:#35d0a1;
+  color:#06151a;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+th,td{
+  padding:12px 8px;
+  border-bottom:1px solid #26384d;
+  text-align:right;
+}
+
+th{color:#91a4b8}
+
+.empty{
+  text-align:center;
+  color:#91a4b8;
+  padding:25px;
+}
+
+.message{
+  margin-top:12px;
+  padding:10px;
+  border-radius:8px;
+  display:none;
+}
+
+footer{
+  text-align:center;
+  color:#71859a;
+  padding:25px;
+}
+
+@media(max-width:800px){
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .main{
+    grid-template-columns:1fr;
+  }
+
+  header{
+    padding:0 10px;
+  }
+
+  .balance{
+    font-size:12px;
+  }
+}
+
+@media(max-width:500px){
+  .cards{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card strong{
+    font-size:16px;
+  }
+
+  .price{
+    font-size:26px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">تداول PRO</div>
+  <div class="balance">
+    الرصيد التجريبي:
+    <b id="balance">10000.00</b> $
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="cards">
+    <div class="card">
+      <small>رصيد الحساب</small>
+      <strong id="accountBalance">$10,000.00</strong>
+    </div>
+
+    <div class="card">
+      <small>الربح / الخسارة</small>
+      <strong id="profit">$0.00</strong>
+    </div>
+
+    <div class="card">
+      <small>المراكز المفتوحة</small>
+      <strong id="positions">0</strong>
+    </div>
+
+    <div class="card">
+      <small>السوق</small>
+      <strong id="currentMarket">BTC/USD</strong>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <div class="panel">
+
+      <h3>الأسواق</h3>
+
+      <div class="market">
+        <button class="active" onclick="changeMarket('BTC/USD',65000)">BTC/USD</button>
+        <button onclick="changeMarket('ETH/USD',3500)">ETH/USD</button>
+        <button onclick="changeMarket('EUR/USD',1.17)">EUR/USD</button>
+        <button onclick="changeMarket('GOLD',3650)">GOLD</button>
+      </div>
+
+      <div>
+        <div id="price" class="price">$65,000.00</div>
+        <span id="change" class="up">+0.00%</span>
+      </div>
+
+      <div class="chart">
+        <div class="grid"></div>
+        <canvas id="chart"></canvas>
+      </div>
+
+    </div>
+
+    <div class="panel">
+
+      <h3>تنفيذ صفقة تجريبية</h3>
+
+      <div class="order-tabs">
+        <button id="buyTab" class="buy" onclick="setSide('buy')">
+          شراء
+        </button>
+
+        <button id="sellTab" onclick="setSide('sell')">
+          بيع
+        </button>
+      </div>
+
+      <label>نوع الأمر</label>
+
+      <select id="orderType">
+        <option>سوق</option>
+        <option>محدد</option>
+      </select>
+
+      <label>الكمية</label>
+
+      <input
+        id="quantity"
+        type="number"
+        min="0.01"
+        step="0.01"
+        value="0.01"
+      >
+
+      <label>السعر</label>
+
+      <input id="orderPrice" type="number">
+
+      <button class="trade-btn" onclick="executeTrade()">
+        تنفيذ الصفقة التجريبية
+      </button>
+
+      <div id="message" class="message"></div>
+
+    </div>
+
+  </div>
+
+  <div class="panel" style="margin-top:15px">
+
+    <h3>الصفقات المفتوحة</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>السوق</th>
+          <th>النوع</th>
+          <th>الكمية</th>
+          <th>سعر الدخول</th>
+          <th>الربح/الخسارة</th>
+          <th>إغلاق</th>
+        </tr>
+      </thead>
+
+      <tbody id="positionsTable">
+        <tr>
+          <td colspan="6" class="empty">
+            لا توجد صفقات مفتوحة
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="panel" style="margin-top:15px">
+
+    <h3>سجل العمليات</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>السوق</th>
+          <th>العملية</th>
+          <th>الكمية</th>
+          <th>السعر</th>
+          <th>الوقت</th>
+        </tr>
+      </thead>
+
+      <tbody id="historyTable">
+        <tr>
+          <td colspan="5" class="empty">
+            لا توجد عمليات بعد
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<footer>
+  منصة تداول تجريبية — جميع الأرصدة والصفقات افتراضية
+</footer>
+
+<script>
+
+let balance = 10000;
+
+let currentMarket = "BTC/USD";
+let currentPrice = 65000;
+let side = "buy";
+
+let positions = [];
+let history = [];
+
+const balanceEl = document.getElementById("balance");
+const accountBalanceEl = document.getElementById("accountBalance");
+const profitEl = document.getElementById("profit");
+const positionsEl = document.getElementById("positions");
+const marketEl = document.getElementById("currentMarket");
+const priceEl = document.getElementById("price");
+const orderPriceEl = document.getElementById("orderPrice");
+
+orderPriceEl.value = currentPrice;
+
+function money(value){
+  return "$" + Number(value).toLocaleString(
+    "en-US",
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  );
+}
+
+function changeMarket(name,price){
+
+  currentMarket = name;
+  currentPrice = price;
+
+  marketEl.textContent = name;
+  priceEl.textContent = money(price);
+  orderPriceEl.value = price;
+
+  document.querySelectorAll(".market button")
+    .forEach(btn => btn.classList.remove("active"));
+
+  event.target.classList.add("active");
+
+  drawChart();
+}
+
+function setSide(newSide){
+
+  side = newSide;
+
+  const buy = document.getElementById("buyTab");
+  const sell = document.getElementById("sellTab");
+
+  buy.classList.remove("buy");
+  sell.classList.remove("sell");
+
+  if(side === "buy"){
+    buy.classList.add("buy");
+  }else{
+    sell.classList.add("sell");
+  }
+}
+
+function executeTrade(){
+
+  const quantity =
+    Number(document.getElementById("quantity").value);
+
+  const price =
+    Number(orderPriceEl.value);
+
+  if(!quantity || quantity <= 0){
+
+    showMessage("أدخل كمية صحيحة","error");
+    return;
+  }
+
+  if(!price || price <= 0){
+
+    showMessage("أدخل سعرًا صحيحًا","error");
+    return;
+  }
+
+  const value = quantity * price;
+
+  if(side === "buy" && value > balance){
+
+    showMessage("الرصيد التجريبي غير كافٍ","error");
+    return;
+  }
+
+  if(side === "buy"){
+    balance -= value;
+  }else{
+    balance += value;
+  }
+
+  const position = {
+    id:Date.now(),
+    market:currentMarket,
+    side:side,
+    quantity:quantity,
+    entry:price
+  };
+
+  positions.push(position);
+
+  history.unshift({
+    market:currentMarket,
+    side:side,
+    quantity:quantity,
+    price:price,
+    time:new Date().toLocaleTimeString("ar-SA")
+  });
+
+  render();
+
+  showMessage(
+    "تم تنفيذ الصفقة التجريبية بنجاح",
+    "success"
+  );
+}
+
+function closePosition(id){
+
+  const index =
+    positions.findIndex(p => p.id === id);
+
+  if(index === -1) return;
+
+  const p = positions[index];
+
+  const value = p.quantity * currentPrice;
+
+  if(p.side === "buy"){
+    balance += value;
+  }else{
+    balance -= value;
+  }
+
+  positions.splice(index,1);
+
+  render();
+
+  showMessage(
+    "تم إغلاق الصفقة التجريبية",
+    "success"
+  );
+}
+
+function calculateProfit(){
+
+  let total = 0;
+
+  positions.forEach(p => {
+
+    if(p.side === "buy"){
+      total +=
+        (currentPrice - p.entry) * p.quantity;
+    }else{
+      total +=
+        (p.entry - currentPrice) * p.quantity;
+    }
+
+  });
+
+  return total;
+}
+
+function render(){
+
+  const profit = calculateProfit();
+
+  balanceEl.textContent =
+    Number(balance).toLocaleString(
+      "en-US",
+      {
+        minimumFractionDigits:2
+      }
+    );
+
+  accountBalanceEl.textContent =
+    money(balance);
+
+  profitEl.textContent =
+    money(profit);
+
+  profitEl.className =
+    profit >= 0 ? "up" : "down";
+
+  positionsEl.textContent =
+    positions.length;
+
+  const table =
+    document.getElementById("positionsTable");
+
+  if(positions.length === 0){
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="6" class="empty">
+          لا توجد صفقات مفتوحة
+        </td>
+      </tr>
+    `;
+
+  }else{
+
+    table.innerHTML =
+      positions.map(p => {
+
+        let pnl;
+
+        if(p.side === "buy"){
+          pnl =
+            (currentPrice-p.entry)*p.quantity;
+        }else{
+          pnl =
+            (p.entry-currentPrice)*p.quantity;
+        }
+
+        return `
+          <tr>
+            <td>${p.market}</td>
+
+            <td class="${p.side==="buy"?"up":"down"}">
+              ${p.side==="buy"?"شراء":"بيع"}
+            </td>
+
+            <td>${p.quantity}</td>
+
+            <td>${money(p.entry)}</td>
+
+            <td class="${pnl>=0?"up":"down"}">
+              ${money(pnl)}
+            </td>
+
+            <td>
+              <button
+                onclick="closePosition(${p.id})"
+                style="
+                background:#b63d50;
+                color:white;
+                border:0;
+                padding:7px 12px;
+                border-radius:6px;
+                ">
+                إغلاق
+              </button>
+            </td>
+          </tr>
+        `;
+
+      }).join("");
+  }
+
+  const historyTable =
+    document.getElementById("historyTable");
+
+  if(history.length === 0){
+
+    historyTable.innerHTML = `
+      <tr>
+        <td colspan="5" class="empty">
+          لا توجد عمليات بعد
+        </td>
+      </tr>
+    `;
+
+  }else{
+
+    historyTable.innerHTML =
+      history.map(h => `
+
+        <tr>
+
+          <td>${h.market}</td>
+
+          <td class="${h.side==="buy"?"up":"down"}">
+            ${h.side==="buy"?"شراء":"بيع"}
+          </td>
+
+          <td>${h.quantity}</td>
+
+          <td>${money(h.price)}</td>
+
+          <td>${h.time}</td>
+
+        </tr>
+
+      `).join("");
+  }
+}
+
+function showMessage(text,type){
+
+  const box =
+    document.getElementById("message");
+
+  box.textContent = text;
+  box.style.display = "block";
+
+  if(type === "error"){
+    box.style.background = "#4a1e28";
+  }else{
+    box.style.background = "#123d35";
+  }
+
+  setTimeout(()=>{
+    box.style.display = "none";
+  },3000);
+}
+
+/* الرسم التجريبي */
+
+const canvas =
+  document.getElementById("chart");
+
+const ctx =
+  canvas.getContext("2d");
+
+function drawChart(){
+
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  let points = [];
+
+  let value = currentPrice;
+
+  for(let i=0;i<45;i++){
+
+    value +=
+      (Math.random()-0.48)
+      * currentPrice
+      * 0.006;
+
+    points.push(value);
+  }
+
+  const min =
+    Math.min(...points);
+
+  const max =
+    Math.max(...points);
+
+  ctx.beginPath();
+
+  points.forEach((p,i)=>{
+
+    const x =
+      i *
+      (canvas.width/(points.length-1));
+
+    const y =
+      canvas.height -
+      ((p-min)/(max-min || 1))
+      * (canvas.height-30)
+      -15;
+
+    if(i===0){
+      ctx.moveTo(x,y);
+    }else{
+      ctx.lineTo(x,y);
+    }
+
+  });
+
+  ctx.strokeStyle = "#35d0a1";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
+/* محاكاة حركة السعر */
+
+setInterval(()=>{
+
+  const movement =
+    (Math.random()-0.5)
+    * currentPrice
+    * 0.002;
+
+  currentPrice += movement;
+
+  priceEl.textContent =
+    money(currentPrice);
+
+  orderPriceEl.value =
+    currentPrice.toFixed(2);
+
+  render();
+  drawChart();
+
+},3000);
+
+window.addEventListener(
+  "resize",
+  drawChart
+);
+
+render();
+drawChart();
+
+</script>
+
+</body>
+</html>
