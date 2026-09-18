@@ -7,310 +7,33 @@
 
 <style>
 *{
-    box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:Arial,Tahoma,sans-serif;
-    background:#08111f;
-    color:#fff;
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#08111f;
+  color:#fff;
 }
 
 header{
-    background:#111a2b;
-    border-bottom:1px solid #26334a;
-    padding:14px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:10;
+  background:#111a2b;
+  border-bottom:1px solid #26334a;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .logo{
-    font-size:24px;
-    font-weight:bold;
-    color:#19d38a;
+  font-size:24px;
+  font-weight:bold;
+  color:#19d38a;
 }
 
 .demo{
-    background:#18263b;
-    color:#19d38a;
-    padding:8px 14px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:18px;
-}
-
-.balance{
-    background:linear-gradient(135deg,#122a3d,#123a35);
-    border:1px solid #214e4b;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:18px;
-}
-
-.balance small{
-    color:#9eabc0;
-}
-
-.balance h1{
-    margin:8px 0;
-    font-size:32px;
-}
-
-.profit{
-    color:#19d38a;
-    font-weight:bold;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1.6fr;
-    gap:18px;
-}
-
-.card{
-    background:#111a2b;
-    border:1px solid #26334a;
-    border-radius:14px;
-    padding:18px;
-}
-
-.card h2{
-    margin-top:0;
-    font-size:18px;
-}
-
-.market{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:14px;
-    background:#172236;
-    border-radius:10px;
-    margin-bottom:10px;
-    cursor:pointer;
-}
-
-.market:hover{
-    background:#1c2b43;
-}
-
-.symbol{
-    font-weight:bold;
-}
-
-.price{
-    font-weight:bold;
-}
-
-.green{
-    color:#19d38a;
-}
-
-.red{
-    color:#ff5364;
-}
-
-.order-box{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-input,select{
-    width:100%;
-    padding:13px;
-    margin-top:7px;
-    background:#0b1422;
-    color:white;
-    border:1px solid #30405a;
-    border-radius:8px;
-    outline:none;
-}
-
-label{
-    color:#9eabc0;
-    font-size:13px;
-}
-
-button{
-    width:100%;
-    padding:13px;
-    border:0;
-    border-radius:8px;
-    color:white;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.buy{
-    background:#16a673;
-}
-
-.buy:hover{
-    background:#19c487;
-}
-
-.sell{
-    background:#d94455;
-}
-
-.sell:hover{
-    background:#f05263;
-}
-
-.full{
-    grid-column:1/-1;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th,td{
-    padding:12px 8px;
-    border-bottom:1px solid #26334a;
-    text-align:right;
-}
-
-th{
-    color:#9eabc0;
-    font-size:13px;
-}
-
-.empty{
-    text-align:center;
-    color:#8492a8;
-    padding:25px;
-}
-
-.notice{
-    margin-top:18px;
-    padding:14px;
-    border-radius:10px;
-    background:#172236;
-    color:#aebbd0;
-    font-size:13px;
-}
-
-@media(max-width:800px){
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-    .full{
-        grid-column:auto;
-    }
-
-    header{
-        padding:12px;
-    }
-
-    .container{
-        padding:12px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="logo">TAJ Trade</div>
-    <div class="demo">حساب تجريبي</div>
-</header>
-
-<div class="container">
-
-    <div class="balance">
-        <small>الرصيد المتاح</small>
-        <h1 id="balance">$10,000.00</h1>
-        <div>
-            الربح والخسارة:
-            <span id="profit" class="profit">$0.00</span>
-        </div>
-    </div>
-
-    <div class="grid">
-
-        <!-- الأسواق -->
-        <div class="card">
-            <h2>الأسواق</h2>
-
-            <div class="market" onclick="selectMarket('BTC/USD')">
-                <span class="symbol">₿ BTC/USD</span>
-                <span>
-                    <span id="btc" class="price">$67,250</span>
-                    <small class="green"> +2.14%</small>
-                </span>
-            </div>
-
-            <div class="market" onclick="selectMarket('ETH/USD')">
-                <span class="symbol">Ξ ETH/USD</span>
-                <span>
-                    <span id="eth" class="price">$3,480</span>
-                    <small class="green"> +1.62%</small>
-                </span>
-            </div>
-
-            <div class="market" onclick="selectMarket('XAU/USD')">
-                <span class="symbol">🥇 XAU/USD</span>
-                <span>
-                    <span id="gold" class="price">$2,585</span>
-                    <small class="green"> +0.48%</small>
-                </span>
-            </div>
-
-            <div class="market" onclick="selectMarket('EUR/USD')">
-                <span class="symbol">€ EUR/USD</span>
-                <span>
-                    <span id="eur" class="price">$1.085</span>
-                    <small class="red"> -0.21%</small>
-                </span>
-            </div>
-        </div>
-
-        <!-- تنفيذ الصفقة -->
-        <div class="card">
-
-            <h2>تنفيذ صفقة</h2>
-
-            <label>الأصل</label>
-            <select id="asset">
-                <option value="BTC/USD">BTC/USD</option>
-                <option value="ETH/USD">ETH/USD</option>
-                <option value="XAU/USD">XAU/USD</option>
-                <option value="EUR/USD">EUR/USD</option>
-            </select>
-
-            <br><br>
-
-            <label>الكمية</label>
-            <input id="quantity" type="number" value="0.01" min="0.0001" step="0.0001">
-
-            <br><br>
-
-            <div class="order-box">
-                <button class="buy" onclick="placeOrder('شراء')">
-                    شراء
-                </button>
-
-                <button class="sell" onclick="placeOrder('بيع')">
-                    بيع
-                </button>
-            </div>
-
-            <div class="notice">
-                ⚠
+  background:#18263b
