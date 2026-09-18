@@ -3,253 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAJ Trade</title>
+<title>TAJ Trade - حساب المستخدم</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:#08111f;
-  color:#fff;
+    margin:0;
+    font-family:Arial,Tahoma,sans-serif;
+    background:#08111f;
+    color:#fff;
 }
 
 header{
-  background:#111a2b;
-  border-bottom:1px solid #26334a;
-  padding:14px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:10;
+    background:#111a2b;
+    border-bottom:1px solid #26334a;
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
 .logo{
-  font-size:24px;
-  font-weight:bold;
-  color:#19d38a;
+    color:#19d38a;
+    font-size:25px;
+    font-weight:bold;
 }
 
 .demo{
-  background:#18263b;
-  color:#19d38a;
-  padding:8px 14px;
-  border-radius:20px;
-  font-size:13px;
-  font-weight:bold;
+    background:#18263b;
+    color:#19d38a;
+    padding:10px 16px;
+    border-radius:20px;
+    font-weight:bold;
 }
 
 .container{
-  max-width:1200px;
-  margin:auto;
-  padding:18px;
+    max-width:1100px;
+    margin:auto;
+    padding:18px;
 }
 
 .balance{
-  background:linear-gradient(135deg,#122a3d,#123a35);
-  border:1px solid #214e4b;
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:18px;
+    background:linear-gradient(135deg,#122a3d,#123a35);
+    border:1px solid #214e4b;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:18px;
 }
 
 .balance small{
-  color:#9eabc0;
+    color:#aeb9ca;
+    font-size:17px;
 }
 
 .balance h1{
-  margin:8px 0 0;
-  font-size:32px;
+    margin:8px 0;
+    font-size:38px;
 }
 
 .profit{
-  color:#19d38a;
-  font-weight:bold;
+    color:#19d38a;
+    font-weight:bold;
+    font-size:18px;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:1fr 1.6fr;
-  gap:18px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
 }
 
 .card{
-  background:#111a2b;
-  border:1px solid #26334a;
-  border-radius:14px;
-  padding:18px;
+    background:#111a2b;
+    border:1px solid #26334a;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
 }
 
 .card h2{
-  margin-top:0;
-  font-size:18px;
+    margin-top:0;
 }
 
 .market{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px;
-  background:#172236;
-  border-radius:10px;
-  margin-bottom:10px;
-  cursor:pointer;
+    background:#18243a;
+    border-radius:14px;
+    padding:16px;
+    margin:12px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.market:hover{
-  background:#1c2b43;
-}
-
-.symbol{
-  font-weight:bold;
-}
-
-.price{
-  font-size:18px;
-  font-weight:bold;
+.market strong{
+    font-size:19px;
 }
 
 .green{
-  color:#19d38a;
+    color:#19d38a;
 }
 
 .red{
-  color:#ff5c6c;
+    color:#ff5b6e;
 }
 
-.chart{
-  height:300px;
-  background:#0b1422;
-  border-radius:12px;
-  border:1px solid #26334a;
-  position:relative;
-  overflow:hidden;
-}
-
-.gridline{
-  position:absolute;
-  left:0;
-  right:0;
-  height:1px;
-  background:#172236;
-}
-
-.line{
-  position:absolute;
-  left:0;
-  right:0;
-  top:45%;
-  height:3px;
-  background:#19d38a;
-  transform:rotate(-4deg);
-  box-shadow:
-    80px 25px 0 #19d38a,
-    160px -10px 0 #19d38a,
-    240px 35px 0 #19d38a,
-    320px 5px 0 #19d38a,
-    400px -30px 0 #19d38a,
-    480px 15px 0 #19d38a;
-}
-
-.order{
-  margin-top:18px;
-}
-
-label{
-  display:block;
-  margin-bottom:6px;
-  color:#9eabc0;
-}
-
-input,select{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  background:#0b1422;
-  border:1px solid #26334a;
-  color:#fff;
-  border-radius:8px;
-  font-size:16px;
-}
-
-.buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
 button{
-  border:0;
-  padding:13px;
-  border-radius:8px;
-  color:#fff;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+    border:0;
+    border-radius:12px;
+    padding:13px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.buy{
-  background:#159b68;
+.deposit{
+    background:#19d38a;
+    color:#06130e;
 }
 
-.buy:hover{
-  background:#19b879;
+.withdraw{
+    background:#ff5b6e;
+    color:white;
 }
 
-.sell{
-  background:#d74758;
+.reward{
+    background:#8b5cf6;
+    color:white;
 }
 
-.sell:hover{
-  background:#f05264;
+input{
+    width:100%;
+    padding:13px;
+    margin:8px 0;
+    border-radius:10px;
+    border:1px solid #34435e;
+    background:#0b1424;
+    color:#fff;
+    font-size:16px;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
+    width:100%;
+    border-collapse:collapse;
 }
 
 th,td{
-  padding:11px 6px;
-  border-bottom:1px solid #26334a;
-  text-align:right;
-}
-
-th{
-  color:#9eabc0;
-  font-size:13px;
+    padding:12px 7px;
+    border-bottom:1px solid #26334a;
+    text-align:right;
 }
 
 .empty{
-  color:#8d99ad;
-  text-align:center;
-  padding:20px;
+    color:#8793a7;
+    text-align:center;
+    padding:20px;
 }
 
-.notice{
-  margin-top:18px;
-  background:#172236;
-  border:1px solid #26334a;
-  padding:14px;
-  border-radius:10px;
-  color:#c6d0df;
-  font-size:13px;
-}
+@media(max-width:700px){
+    .grid{
+        grid-template-columns:1fr;
+    }
 
-@media(max-width:800px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+    .balance h1{
+        font-size:31px;
+    }
 
-  .chart{
-    height:240px;
-  }
+    .market{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+    }
 }
 </style>
 </head>
@@ -257,258 +190,252 @@ th{
 <body>
 
 <header>
-  <div class="logo">TAJ Trade</div>
-  <div class="demo">حساب تجريبي</div>
+    <div class="logo">TAJ Trade</div>
+    <div class="demo">حساب تجريبي</div>
 </header>
 
 <div class="container">
 
-  <div class="balance">
-    <small>الرصيد التجريبي</small>
-    <h1 id="balance">$10,000.00</h1>
-    <div class="profit" id="profit">+ $0.00</div>
-  </div>
+    <section class="balance">
+        <small>الرصيد التجريبي</small>
+        <h1 id="balance">$10,000.00</h1>
+        <div class="profit" id="profit">$0.00</div>
+    </section>
 
-  <div class="grid">
+    <div class="grid">
 
-    <!-- الأسواق -->
-    <div class="card">
-      <h2>الأسواق</h2>
+        <section class="card">
+            <h2>📊 الأسواق</h2>
 
-      <div class="market" onclick="selectMarket('BTC/USD',67250)">
-        <div>
-          <div class="symbol">BTC/USD</div>
-          <small>Bitcoin</small>
-        </div>
-        <div>
-          <div class="price">$67,250</div>
-          <div class="green">+2.41%</div>
-        </div>
-      </div>
+            <div class="market">
+                <div>
+                    <strong>BTC/USD</strong><br>
+                    Bitcoin
+                </div>
+                <div>
+                    <strong>$67,250</strong><br>
+                    <span class="green">+2.41%</span>
+                </div>
+            </div>
 
-      <div class="market" onclick="selectMarket('ETH/USD',2580)">
-        <div>
-          <div class="symbol">ETH/USD</div>
-          <small>Ethereum</small>
-        </div>
-        <div>
-          <div class="price">$2,580</div>
-          <div class="green">+1.82%</div>
-        </div>
-      </div>
+            <div class="market">
+                <div>
+                    <strong>ETH/USD</strong><br>
+                    Ethereum
+                </div>
+                <div>
+                    <strong>$2,580</strong><br>
+                    <span class="green">+1.82%</span>
+                </div>
+            </div>
 
-      <div class="market" onclick="selectMarket('EUR/USD',1.18)">
-        <div>
-          <div class="symbol">EUR/USD</div>
-          <small>Euro / Dollar</small>
-        </div>
-        <div>
-          <div class="price">$1.18</div>
-          <div class="red">-0.32%</div>
-        </div>
-      </div>
+            <div class="market">
+                <div>
+                    <strong>EUR/USD</strong><br>
+                    Euro / Dollar
+                </div>
+                <div>
+                    <strong>$1.18</strong><br>
+                    <span class="red">-0.32%</span>
+                </div>
+            </div>
 
-      <div class="market" onclick="selectMarket('GOLD/USD',3660)">
-        <div>
-          <div class="symbol">GOLD/USD</div>
-          <small>Gold</small>
-        </div>
-        <div>
-          <div class="price">$3,660</div>
-          <div class="green">+0.74%</div>
-        </div>
-      </div>
+            <div class="market">
+                <div>
+                    <strong>GOLD/USD</strong><br>
+                    Gold
+                </div>
+                <div>
+                    <strong>$3,660</strong><br>
+                    <span class="green">+0.74%</span>
+                </div>
+            </div>
+        </section>
 
-    </div>
+        <section class="card">
+            <h2>💳 الحساب</h2>
 
-    <!-- التداول -->
-    <div class="card">
+            <div class="actions">
+                <button class="deposit" onclick="deposit()">إيداع تجريبي</button>
+                <button class="withdraw" onclick="withdraw()">سحب تجريبي</button>
+                <button class="reward" onclick="reward()">🎁 مكافأة</button>
+            </div>
 
-      <h2 id="marketTitle">BTC/USD</h2>
+            <hr style="border-color:#26334a;margin:20px 0">
 
-      <div class="chart">
-        <div class="gridline" style="top:20%"></div>
-        <div class="gridline" style="top:40%"></div>
-        <div class="gridline" style="top:60%"></div>
-        <div class="gridline" style="top:80%"></div>
-        <div class="line"></div>
-      </div>
-
-      <div class="order">
-
-        <label>نوع الأمر</label>
-
-        <select id="orderType">
-          <option value="market">سعر السوق</option>
-          <option value="limit">أمر محدد</option>
-        </select>
-
-        <label>الكمية</label>
-
-        <input
-          id="amount"
-          type="number"
-          value="100"
-          min="1"
-          placeholder="أدخل المبلغ"
-        >
-
-        <div class="buttons">
-          <button class="buy" onclick="trade('شراء')">
-            شراء
-          </button>
-
-          <button class="sell" onclick="trade('بيع')">
-            بيع
-          </button>
-        </div>
-
-      </div>
+            <h3>👤 حساب المستخدم</h3>
+            <p>المستخدم: <strong>TAJ User</strong></p>
+            <p>الحالة: <span class="green">نشط</span></p>
+            <p>نوع الحساب: حساب تجريبي</p>
+        </section>
 
     </div>
 
-  </div>
+    <section class="card">
+        <h2>📈 الربح والخسارة</h2>
 
-  <!-- الصفقات -->
-  <div class="card" style="margin-top:18px">
+        <div class="market">
+            <span>إجمالي الأرباح</span>
+            <strong class="green" id="totalProfit">$0.00</strong>
+        </div>
 
-    <h2>صفقاتي</h2>
+        <div class="market">
+            <span>إجمالي الخسائر</span>
+            <strong class="red" id="totalLoss">$0.00</strong>
+        </div>
+    </section>
 
-    <table>
-      <thead>
-        <tr>
-          <th>الأصل</th>
-          <th>النوع</th>
-          <th>المبلغ</th>
-          <th>السعر</th>
-          <th>الحالة</th>
-        </tr>
-      </thead>
+    <section class="card">
+        <h2>🎁 المكافآت والهدايا</h2>
+        <p>المكافآت المتاحة في حسابك:</p>
 
-      <tbody id="trades">
-        <tr>
-          <td colspan="5" class="empty">
-            لا توجد صفقات حتى الآن
-          </td>
-        </tr>
-      </tbody>
+        <div class="market">
+            <span>مكافأة ترحيبية</span>
+            <strong class="green">$100</strong>
+        </div>
 
-    </table>
+        <div class="market">
+            <span>مكافأة تجريبية</span>
+            <strong class="green">$50</strong>
+        </div>
+    </section>
 
-  </div>
+    <section class="card">
+        <h2>📋 سجل العمليات</h2>
 
-  <div class="notice">
-    ⚠️ هذه منصة تداول تجريبية. جميع الأرصدة والأسعار والصفقات
-    محاكاة ولا تمثل أموالاً حقيقية.
-  </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>العملية</th>
+                    <th>المبلغ</th>
+                    <th>التاريخ</th>
+                </tr>
+            </thead>
+
+            <tbody id="transactions"></tbody>
+        </table>
+    </section>
 
 </div>
 
 <script>
 
-let balance = 10000;
-let profit = 0;
+let data = JSON.parse(localStorage.getItem("tajTradeData")) || {
+    balance:10000,
+    profit:0,
+    loss:0,
+    transactions:[]
+};
 
-let selectedMarket = "BTC/USD";
-let selectedPrice = 67250;
-
-function selectMarket(symbol, price){
-
-  selectedMarket = symbol;
-  selectedPrice = price;
-
-  document.getElementById("marketTitle").innerText = symbol;
-
+function save(){
+    localStorage.setItem("tajTradeData",JSON.stringify(data));
+    render();
 }
 
-function trade(type){
-
-  let amount =
-    Number(document.getElementById("amount").value);
-
-  if(!amount || amount <= 0){
-
-    alert("أدخل مبلغاً صحيحاً");
-
-    return;
-  }
-
-  if(amount > balance){
-
-    alert("الرصيد التجريبي غير كافٍ");
-
-    return;
-  }
-
-  balance -= amount;
-
-  // ربح/خسارة تجريبية عشوائية
-  let change =
-    (Math.random() * 0.04 - 0.015) * amount;
-
-  profit += change;
-
-  updateBalance();
-
-  addTrade(
-    selectedMarket,
-    type,
-    amount,
-    selectedPrice
-  );
-
-}
-
-function updateBalance(){
-
-  document.getElementById("balance").innerText =
-    "$" + balance.toLocaleString(
-      undefined,
-      {
+function money(value){
+    return "$" + Number(value).toLocaleString("en-US",{
         minimumFractionDigits:2,
         maximumFractionDigits:2
-      }
-    );
-
-  let sign = profit >= 0 ? "+" : "";
-
-  document.getElementById("profit").innerText =
-    sign + " $" +
-    profit.toFixed(2);
-
+    });
 }
 
-function addTrade(symbol,type,amount,price){
+function render(){
 
-  let table =
-    document.getElementById("trades");
+    document.getElementById("balance").textContent =
+        money(data.balance);
 
-  let empty =
-    table.querySelector(".empty");
+    document.getElementById("profit").textContent =
+        (data.profit >= 0 ? "+" : "") + money(data.profit);
 
-  if(empty){
-    empty.parentElement.remove();
-  }
+    document.getElementById("totalProfit").textContent =
+        money(data.profit);
 
-  let row =
-    document.createElement("tr");
+    document.getElementById("totalLoss").textContent =
+        money(data.loss);
 
-  let status =
-    type === "شراء"
-      ? "شراء مفتوح"
-      : "بيع مفتوح";
+    const table=document.getElementById("transactions");
 
-  row.innerHTML = `
-    <td>${symbol}</td>
-    <td>${type}</td>
-    <td>$${amount.toFixed(2)}</td>
-    <td>${price}</td>
-    <td class="green">${status}</td>
-  `;
+    if(!data.transactions.length){
+        table.innerHTML =
+        '<tr><td colspan="3" class="empty">لا توجد عمليات حتى الآن</td></tr>';
+        return;
+    }
 
-  table.prepend(row);
-
+    table.innerHTML=data.transactions
+        .slice()
+        .reverse()
+        .map(t=>`
+        <tr>
+            <td>${t.type}</td>
+            <td>${money(t.amount)}</td>
+            <td>${t.date}</td>
+        </tr>
+        `).join("");
 }
+
+function addTransaction(type,amount){
+
+    data.transactions.push({
+        type:type,
+        amount:amount,
+        date:new Date().toLocaleString("ar")
+    });
+
+    save();
+}
+
+function deposit(){
+
+    let amount=prompt("أدخل مبلغ الإيداع التجريبي:");
+
+    if(amount===null)return;
+
+    amount=Number(amount);
+
+    if(!amount || amount<=0){
+        alert("أدخل مبلغاً صحيحاً");
+        return;
+    }
+
+    data.balance+=amount;
+
+    addTransaction("إيداع تجريبي",amount);
+}
+
+function withdraw(){
+
+    let amount=prompt("أدخل مبلغ السحب التجريبي:");
+
+    if(amount===null)return;
+
+    amount=Number(amount);
+
+    if(!amount || amount<=0){
+        alert("أدخل مبلغاً صحيحاً");
+        return;
+    }
+
+    if(amount>data.balance){
+        alert("الرصيد غير كافٍ");
+        return;
+    }
+
+    data.balance-=amount;
+
+    addTransaction("سحب تجريبي",amount);
+}
+
+function reward(){
+
+    const amount=100;
+
+    data.balance+=amount;
+    data.profit+=amount;
+
+    addTransaction("🎁 مكافأة تجريبية",amount);
+}
+
+render();
 
 </script>
 
