@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -23,17 +22,18 @@ body{
 
 .header{
     background:linear-gradient(135deg,#101b2b,#162738);
-    padding:20px 18px;
     border-bottom:1px solid #263b52;
     box-shadow:0 4px 15px rgba(0,0,0,.25);
+    padding:18px 20px;
 }
 
-.header-top{
-    max-width:900px;
+.header-inner{
+    max-width:950px;
     margin:auto;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
@@ -44,25 +44,90 @@ body{
 
 .user{
     color:#aebccc;
+    font-size:13px;
+}
+
+.back{
+    color:#dce4f5;
+    text-decoration:none;
     font-size:14px;
+}
+
+.back:hover{
+    color:#20d67b;
 }
 
 .container{
-    max-width:900px;
+    max-width:950px;
     margin:auto;
-    padding:20px 15px 100px;
+    padding:25px 15px 100px;
 }
 
-.title{
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.title h1{
     font-size:25px;
-    font-weight:bold;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
-.subtitle{
+.title p{
     color:#8796a8;
     font-size:14px;
-    margin-bottom:20px;
+}
+
+.balance{
+    background:linear-gradient(135deg,#111a27,#142638);
+    border:1px solid #263b52;
+    border-radius:14px;
+    padding:15px 20px;
+    min-width:180px;
+    text-align:center;
+}
+
+.balance small{
+    display:block;
+    color:#91a0b2;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.balance strong{
+    display:block;
+    color:#20d67b;
+    font-size:22px;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    background:#0d1521;
+    border:1px solid #263b52;
+    border-radius:14px;
+    padding:7px;
+    margin-bottom:18px;
+}
+
+.tab{
+    flex:1;
+    border:0;
+    background:transparent;
+    color:#91a0b2;
+    padding:12px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.tab.active{
+    background:#20d67b;
+    color:#071016;
+    font-weight:bold;
 }
 
 .stats{
@@ -74,22 +139,19 @@ body{
 
 .stat{
     background:#111a27;
-    border:1px solid #263344;
-    border-radius:15px;
-    padding:17px 12px;
-    text-align:center;
+    border:1px solid #263b52;
+    border-radius:14px;
+    padding:17px;
 }
 
 .stat small{
+    color:#8796a8;
     display:block;
-    color:#8493a5;
-    margin-bottom:8px;
-    font-size:12px;
+    margin-bottom:7px;
 }
 
 .stat strong{
-    display:block;
-    font-size:19px;
+    font-size:20px;
 }
 
 .green{
@@ -97,163 +159,165 @@ body{
 }
 
 .red{
-    color:#ff5266;
+    color:#ff5f6d;
 }
 
 .blue{
-    color:#4da3ff;
+    color:#56a8ff;
 }
 
 .card{
     background:#111a27;
-    border:1px solid #263344;
-    border-radius:17px;
+    border:1px solid #263b52;
+    border-radius:16px;
     overflow:hidden;
-    margin-bottom:18px;
+    margin-bottom:16px;
     box-shadow:0 8px 25px rgba(0,0,0,.18);
 }
 
 .card-title{
-    padding:17px;
-    font-size:17px;
-    font-weight:bold;
-    border-bottom:1px solid #263344;
-}
-
-.filters{
-    display:flex;
-    gap:8px;
-    padding:14px;
-    overflow-x:auto;
-}
-
-.filter{
-    background:#182434;
-    color:#aebccc;
-    border:1px solid #2b3d52;
-    border-radius:10px;
-    padding:9px 15px;
-    font-size:13px;
-    white-space:nowrap;
-    cursor:pointer;
-}
-
-.filter.active{
-    background:#20d67b;
-    color:#06120c;
-    border-color:#20d67b;
-    font-weight:bold;
-}
-
-.trade{
-    padding:17px;
-    border-bottom:1px solid #202d3d;
-}
-
-.trade:last-child{
-    border-bottom:none;
-}
-
-.trade-head{
+    padding:17px 18px;
+    border-bottom:1px solid rgba(255,255,255,.06);
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:12px;
 }
 
-.symbol{
+.card-title h2{
     font-size:17px;
-    font-weight:bold;
 }
 
-.type{
-    font-size:11px;
-    padding:5px 9px;
-    border-radius:7px;
-    margin-right:7px;
-}
-
-.buy{
-    background:rgba(32,214,123,.13);
-    color:#20d67b;
-}
-
-.sell{
-    background:rgba(255,82,102,.13);
-    color:#ff5266;
-}
-
-.status{
-    color:#20d67b;
+.card-title span{
+    color:#718196;
     font-size:12px;
 }
 
-.trade-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
+.trade{
+    padding:17px 18px;
+    border-bottom:1px solid rgba(255,255,255,.06);
 }
 
-.item{
-    background:#0b121c;
-    border-radius:10px;
-    padding:10px;
+.trade:last-child{
+    border-bottom:0;
 }
 
-.item small{
+.trade-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:13px;
+}
+
+.symbol{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.coin{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#172538;
+    color:#20d67b;
+    font-weight:bold;
+}
+
+.symbol strong{
     display:block;
-    color:#718095;
+    margin-bottom:4px;
+}
+
+.symbol small{
+    color:#718196;
+}
+
+.status{
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:11px;
+    background:rgba(32,214,123,.1);
+    color:#20d67b;
+}
+
+.status.closed{
+    background:rgba(255,255,255,.06);
+    color:#91a0b2;
+}
+
+.trade-data{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.data{
+    background:#0c1420;
+    border-radius:10px;
+    padding:11px;
+}
+
+.data small{
+    display:block;
+    color:#718196;
     font-size:11px;
     margin-bottom:5px;
 }
 
-.item span{
+.data strong{
     font-size:13px;
-    color:#dce4ec;
-}
-
-.profit{
-    font-weight:bold;
-    font-size:15px !important;
 }
 
 .empty{
-    display:none;
     text-align:center;
-    padding:35px 15px;
-    color:#77879a;
+    padding:45px 20px;
+    color:#718196;
 }
 
-.bottom-nav{
+.empty-icon{
+    width:58px;
+    height:58px;
+    margin:0 auto 15px;
+    border-radius:18px;
+    background:#172538;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.footer-nav{
     position:fixed;
     bottom:0;
-    left:0;
     right:0;
-    background:#0d1622;
-    border-top:1px solid #263344;
-    display:flex;
-    justify-content:center;
-    z-index:10;
+    left:0;
+    background:#0d1521;
+    border-top:1px solid #263b52;
+    padding:10px 15px;
 }
 
-.nav-inner{
-    width:100%;
-    max-width:900px;
+.footer-inner{
+    max-width:700px;
+    margin:auto;
     display:flex;
     justify-content:space-around;
 }
 
 .nav-item{
-    color:#718095;
+    color:#718196;
     text-decoration:none;
-    padding:12px 8px 10px;
     text-align:center;
     font-size:11px;
+    padding:5px 12px;
 }
 
 .nav-item span{
     display:block;
-    font-size:19px;
+    font-size:20px;
     margin-bottom:3px;
 }
 
@@ -261,22 +325,50 @@ body{
     color:#20d67b;
 }
 
-@media(max-width:600px){
+@media(max-width:700px){
+
+    .header-inner{
+        flex-wrap:wrap;
+    }
+
+    .top{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .balance{
+        width:100%;
+    }
+
     .stats{
-        grid-template-columns:1fr 1fr 1fr;
-        gap:7px;
+        grid-template-columns:1fr;
     }
 
-    .stat{
-        padding:13px 5px;
+    .trade-data{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .stat strong{
-        font-size:15px;
+    .trade-top{
+        align-items:flex-start;
     }
 
-    .trade-grid{
+    .container{
+        padding-top:20px;
+    }
+}
+
+@media(max-width:400px){
+
+    .trade-data{
         grid-template-columns:1fr 1fr;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .title h1{
+        font-size:22px;
     }
 }
 </style>
@@ -285,350 +377,395 @@ body{
 <body>
 
 <header class="header">
-    <div class="header-top">
-        <div class="logo">TAJ TRADE</div>
-        <div class="user">حساب المستخدم</div>
+    <div class="header-inner">
+
+        <a class="back" href="dashboard.html">
+            ← العودة
+        </a>
+
+        <div class="logo">
+            TAJ TRADE
+        </div>
+
+        <div class="user">
+            حساب المستخدم
+        </div>
+
     </div>
 </header>
 
 <main class="container">
 
-    <h1 class="title">الصفقات</h1>
-    <p class="subtitle">سجل جميع عمليات التداول الخاصة بك</p>
+    <div class="top">
 
-    <section class="stats">
+        <div class="title">
+            <h1>الصفقات</h1>
+            <p>تابع جميع عمليات التداول الخاصة بحسابك</p>
+        </div>
+
+        <div class="balance">
+            <small>الرصيد الحالي</small>
+            <strong>$10,250.00</strong>
+        </div>
+
+    </div>
+
+    <div class="tabs">
+
+        <button class="tab active" onclick="showTrades('all',this)">
+            الكل
+        </button>
+
+        <button class="tab" onclick="showTrades('open',this)">
+            مفتوحة
+        </button>
+
+        <button class="tab" onclick="showTrades('closed',this)">
+            مغلقة
+        </button>
+
+    </div>
+
+    <div class="stats">
 
         <div class="stat">
             <small>إجمالي الصفقات</small>
-            <strong class="blue">24</strong>
+            <strong id="totalTrades">12</strong>
         </div>
 
         <div class="stat">
-            <small>صفقات رابحة</small>
-            <strong class="green">17</strong>
+            <small>الصفقات المفتوحة</small>
+            <strong class="blue" id="openTrades">3</strong>
         </div>
 
         <div class="stat">
-            <small>صافي الربح</small>
-            <strong class="green">+$486.20</strong>
+            <small>الربح / الخسارة</small>
+            <strong class="green">+$428.50</strong>
         </div>
 
-    </section>
+    </div>
 
     <section class="card">
 
         <div class="card-title">
-            سجل التداول
+            <h2>سجل الصفقات</h2>
+            <span>آخر العمليات</span>
         </div>
 
-        <div class="filters">
+        <div id="tradesList">
 
-            <button class="filter active" onclick="filterTrades('all',this)">
-                الكل
-            </button>
+            <div class="trade" data-status="open">
 
-            <button class="filter" onclick="filterTrades('buy',this)">
-                شراء
-            </button>
+                <div class="trade-top">
 
-            <button class="filter" onclick="filterTrades('sell',this)">
-                بيع
-            </button>
+                    <div class="symbol">
 
-            <button class="filter" onclick="filterTrades('profit',this)">
-                رابحة
-            </button>
+                        <div class="coin">
+                            BTC
+                        </div>
 
-            <button class="filter" onclick="filterTrades('loss',this)">
-                خاسرة
-            </button>
+                        <div>
+                            <strong>Bitcoin / USDT</strong>
+                            <small>شراء • اليوم 14:32</small>
+                        </div>
 
-        </div>
-
-        <div id="trades">
-
-            <div class="trade" data-type="buy" data-result="profit">
-
-                <div class="trade-head">
-                    <div>
-                        <span class="symbol">BTC/USDT</span>
-                        <span class="type buy">شراء</span>
                     </div>
 
-                    <span class="status">مغلقة</span>
+                    <div class="status">
+                        مفتوحة
+                    </div>
+
                 </div>
 
-                <div class="trade-grid">
+                <div class="trade-data">
 
-                    <div class="item">
+                    <div class="data">
                         <small>سعر الدخول</small>
-                        <span>$64,280.50</span>
+                        <strong>$64,250</strong>
                     </div>
 
-                    <div class="item">
-                        <small>سعر الخروج</small>
-                        <span>$65,120.30</span>
+                    <div class="data">
+                        <small>السعر الحالي</small>
+                        <strong>$65,180</strong>
                     </div>
 
-                    <div class="item">
-                        <small>الكمية</small>
-                        <span>0.025 BTC</span>
-                    </div>
-
-                    <div class="item">
-                        <small>النتيجة</small>
-                        <span class="profit green">+$20.99</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="trade" data-type="sell" data-result="profit">
-
-                <div class="trade-head">
-                    <div>
-                        <span class="symbol">ETH/USDT</span>
-                        <span class="type sell">بيع</span>
-                    </div>
-
-                    <span class="status">مغلقة</span>
-                </div>
-
-                <div class="trade-grid">
-
-                    <div class="item">
-                        <small>سعر الدخول</small>
-                        <span>$3,420.80</span>
-                    </div>
-
-                    <div class="item">
-                        <small>سعر الخروج</small>
-                        <span>$3,360.40</span>
-                    </div>
-
-                    <div class="item">
-                        <small>الكمية</small>
-                        <span>0.40 ETH</span>
-                    </div>
-
-                    <div class="item">
-                        <small>النتيجة</small>
-                        <span class="profit green">+$24.16</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="trade" data-type="buy" data-result="loss">
-
-                <div class="trade-head">
-                    <div>
-                        <span class="symbol">XAU/USD</span>
-                        <span class="type buy">شراء</span>
-                    </div>
-
-                    <span class="status">مغلقة</span>
-                </div>
-
-                <div class="trade-grid">
-
-                    <div class="item">
-                        <small>سعر الدخول</small>
-                        <span>2,645.20</span>
-                    </div>
-
-                    <div class="item">
-                        <small>سعر الخروج</small>
-                        <span>2,638.70</span>
-                    </div>
-
-                    <div class="item">
+                    <div class="data">
                         <small>الحجم</small>
-                        <span>0.50 Lot</span>
+                        <strong>$1,500</strong>
                     </div>
 
-                    <div class="item">
-                        <small>النتيجة</small>
-                        <span class="profit red">-$3.25</span>
+                    <div class="data">
+                        <small>الربح</small>
+                        <strong class="green">+$42.80</strong>
                     </div>
 
                 </div>
 
             </div>
 
+            <div class="trade" data-status="open">
 
-            <div class="trade" data-type="sell" data-result="profit">
+                <div class="trade-top">
 
-                <div class="trade-head">
-                    <div>
-                        <span class="symbol">EUR/USD</span>
-                        <span class="type sell">بيع</span>
+                    <div class="symbol">
+
+                        <div class="coin">
+                            ETH
+                        </div>
+
+                        <div>
+                            <strong>Ethereum / USDT</strong>
+                            <small>شراء • اليوم 12:18</small>
+                        </div>
+
                     </div>
 
-                    <span class="status">مغلقة</span>
+                    <div class="status">
+                        مفتوحة
+                    </div>
+
                 </div>
 
-                <div class="trade-grid">
+                <div class="trade-data">
 
-                    <div class="item">
+                    <div class="data">
                         <small>سعر الدخول</small>
-                        <span>1.08420</span>
+                        <strong>$3,420</strong>
                     </div>
 
-                    <div class="item">
-                        <small>سعر الخروج</small>
-                        <span>1.08190</span>
+                    <div class="data">
+                        <small>السعر الحالي</small>
+                        <strong>$3,505</strong>
                     </div>
 
-                    <div class="item">
+                    <div class="data">
                         <small>الحجم</small>
-                        <span>1.00 Lot</span>
+                        <strong>$2,000</strong>
                     </div>
 
-                    <div class="item">
-                        <small>النتيجة</small>
-                        <span class="profit green">+$23.00</span>
+                    <div class="data">
+                        <small>الربح</small>
+                        <strong class="green">+$51.20</strong>
                     </div>
 
                 </div>
 
             </div>
 
+            <div class="trade" data-status="open">
 
-            <div class="trade" data-type="buy" data-result="profit">
+                <div class="trade-top">
 
-                <div class="trade-head">
-                    <div>
-                        <span class="symbol">SOL/USDT</span>
-                        <span class="type buy">شراء</span>
+                    <div class="symbol">
+
+                        <div class="coin">
+                            XRP
+                        </div>
+
+                        <div>
+                            <strong>XRP / USDT</strong>
+                            <small>بيع • اليوم 10:45</small>
+                        </div>
+
                     </div>
 
-                    <span class="status">مغلقة</span>
+                    <div class="status">
+                        مفتوحة
+                    </div>
+
                 </div>
 
-                <div class="trade-grid">
+                <div class="trade-data">
 
-                    <div class="item">
+                    <div class="data">
                         <small>سعر الدخول</small>
-                        <span>$142.60</span>
+                        <strong>$0.584</strong>
                     </div>
 
-                    <div class="item">
-                        <small>سعر الخروج</small>
-                        <span>$148.30</span>
+                    <div class="data">
+                        <small>السعر الحالي</small>
+                        <strong>$0.571</strong>
                     </div>
 
-                    <div class="item">
-                        <small>الكمية</small>
-                        <span>8 SOL</span>
+                    <div class="data">
+                        <small>الحجم</small>
+                        <strong>$850</strong>
                     </div>
 
-                    <div class="item">
-                        <small>النتيجة</small>
-                        <span class="profit green">+$45.60</span>
+                    <div class="data">
+                        <small>الربح</small>
+                        <strong class="green">+$18.40</strong>
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <div class="trade" data-status="closed">
 
-        <div id="empty" class="empty">
-            لا توجد صفقات مطابقة لهذا الاختيار.
+                <div class="trade-top">
+
+                    <div class="symbol">
+
+                        <div class="coin">
+                            BTC
+                        </div>
+
+                        <div>
+                            <strong>Bitcoin / USDT</strong>
+                            <small>شراء • أمس 18:20</small>
+                        </div>
+
+                    </div>
+
+                    <div class="status closed">
+                        مغلقة
+                    </div>
+
+                </div>
+
+                <div class="trade-data">
+
+                    <div class="data">
+                        <small>سعر الدخول</small>
+                        <strong>$62,800</strong>
+                    </div>
+
+                    <div class="data">
+                        <small>سعر الخروج</small>
+                        <strong>$64,100</strong>
+                    </div>
+
+                    <div class="data">
+                        <small>الحجم</small>
+                        <strong>$2,500</strong>
+                    </div>
+
+                    <div class="data">
+                        <small>الربح</small>
+                        <strong class="green">+$126.40</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="trade" data-status="closed">
+
+                <div class="trade-top">
+
+                    <div class="symbol">
+
+                        <div class="coin">
+                            ETH
+                        </div>
+
+                        <div>
+                            <strong>Ethereum / USDT</strong>
+                            <small>بيع • أمس 15:05</small>
+                        </div>
+
+                    </div>
+
+                    <div class="status closed">
+                        مغلقة
+                    </div>
+
+                </div>
+
+                <div class="trade-data">
+
+                    <div class="data">
+                        <small>سعر الدخول</small>
+                        <strong>$3,550</strong>
+                    </div>
+
+                    <div class="data">
+                        <small>سعر الخروج</small>
+                        <strong>$3,470</strong>
+                    </div>
+
+                    <div class="data">
+                        <small>الحجم</small>
+                        <strong>$1,200</strong>
+                    </div>
+
+                    <div class="data">
+                        <small>الربح</small>
+                        <strong class="green">+$32.70</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </section>
 
 </main>
 
+<nav class="footer-nav">
 
-<nav class="bottom-nav">
+    <div class="footer-inner">
 
-    <div class="nav-inner">
-
-        <a class="nav-item" href="dashboard.html">
+        <a href="dashboard.html" class="nav-item">
             <span>⌂</span>
             الرئيسية
         </a>
 
-        <a class="nav-item" href="wallet.html">
-            <span>▣</span>
-            المحفظة
+        <a href="trading.html" class="nav-item">
+            <span>◈</span>
+            التداول
         </a>
 
-        <a class="nav-item active" href="trades.html">
-            <span>↗</span>
+        <a href="trades.html" class="nav-item active">
+            <span>▣</span>
             الصفقات
         </a>
 
-        <a class="nav-item" href="profile.html">
+        <a href="wallet.html" class="nav-item">
+            <span>▤</span>
+            المحفظة
+        </a>
+
+        <a href="profile.html" class="nav-item">
             <span>●</span>
-            الحساب
+            حسابي
         </a>
 
     </div>
 
 </nav>
 
-
 <script>
 
-function filterTrades(filter,button){
+function showTrades(type,button){
 
-    const buttons = document.querySelectorAll('.filter');
-
-    buttons.forEach(function(btn){
-        btn.classList.remove('active');
+    document.querySelectorAll('.tab').forEach(function(tab){
+        tab.classList.remove('active');
     });
 
     button.classList.add('active');
 
-    const trades = document.querySelectorAll('.trade');
-
-    let visible = 0;
+    const trades=document.querySelectorAll('.trade');
 
     trades.forEach(function(trade){
 
-        const type = trade.getAttribute('data-type');
-        const result = trade.getAttribute('data-result');
-
-        let show = false;
-
-        if(filter === 'all'){
-            show = true;
+        if(type==='all'){
+            trade.style.display='block';
         }
 
-        if(filter === 'buy' && type === 'buy'){
-            show = true;
+        else if(trade.dataset.status===type){
+            trade.style.display='block';
         }
 
-        if(filter === 'sell' && type === 'sell'){
-            show = true;
-        }
-
-        if(filter === 'profit' && result === 'profit'){
-            show = true;
-        }
-
-        if(filter === 'loss' && result === 'loss'){
-            show = true;
-        }
-
-        trade.style.display = show ? 'block' : 'none';
-
-        if(show){
-            visible++;
+        else{
+            trade.style.display='none';
         }
 
     });
 
-    document.getElementById('empty').style.display =
-        visible === 0 ? 'block' : 'none';
 }
 
 </script>
