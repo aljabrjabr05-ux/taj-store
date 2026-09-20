@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحفظة - TAJ TRADE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #080e19;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            height: 65px;
+            background: #111a2e;
+            border-bottom: 1px solid #263451;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #f5c542;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .back {
+            color: #dce4f5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back:hover {
+            color: #f5c542;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 18px 50px;
+        }
+
+        .title {
+            margin-bottom: 22px;
+        }
+
+        .title h1 {
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .title p {
+            color: #8e9bb5;
+            font-size: 14px;
+        }
+
+        .balance {
+            background: linear-gradient(135deg, #111a2e, #17233c);
+            border: 1px solid #263451;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .balance-label {
+            color: #8e9bb5;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .balance-value {
+            color: #f5c542;
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #111a2e;
+            border: 1px solid #263451;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .card-label {
+            color: #8e9bb5;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-value {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .green {
+            color: #35d07f;
+        }
+
+        .gold {
+            color: #f5c542;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 28px;
+        }
+
+        .action {
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .deposit {
+            background: #1c8f5a;
+        }
+
+        .withdraw {
+            background: #34415c;
+        }
+
+        .section {
+            background: #111a2e;
+            border: 1px solid #263451;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 18px;
+            border-bottom: 1px solid #263451;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .asset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px;
+            border-bottom: 1px solid #202d45;
+        }
+
+        .asset:last-child {
+            border-bottom: none;
+        }
+
+        .asset-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .coin {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #263451;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .asset-name strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .asset-name span {
+            color: #8e9bb5;
+            font-size: 11px;
+        }
+
+        .asset-value {
+            text-align: left;
+        }
+
+        .asset-value strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .asset-value span {
+            color: #8e9bb5;
+            font-size: 11px;
+        }
+
+        .empty {
+            padding: 35px 20px;
+            text-align: center;
+            color: #68758e;
+            font-size: 13px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #68758e;
+            font-size: 11px;
+            padding: 25px;
+        }
+
+        @media (max-width: 650px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .balance-value {
+                font-size: 28px;
+            }
+
+            .container {
+                padding: 20px 12px 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        TAJ TRADE
+    </div>
+
+    <a href="dashboard.html" class="back">
+        ← لوحة التحكم
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <div class="title">
+        <h1>المحفظة</h1>
+        <p>إدارة أرصدتك وأصولك داخل حساب TAJ TRADE</p>
+    </div>
+
+
+    <div class="balance">
+
+        <div class="balance-label">
+            إجمالي قيمة المحفظة
+        </div>
+
+        <div class="balance-value">
+            $0.00
+        </div>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-label">
+                الرصيد المتاح
+            </div>
+
+            <div class="card-value gold">
+                $0.00
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-label">
+                الأرباح
+            </div>
+
+            <div class="card-value green">
+                $0.00
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-label">
+                الأصول
+            </div>
+
+            <div class="card-value">
+                0
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="actions">
+
+        <button
+            class="action deposit"
+            onclick="deposit()">
+            ➕ إيداع الأموال
+        </button>
+
+        <button
+            class="action withdraw"
+            onclick="withdraw()">
+            💸 سحب الأموال
+        </button>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-header">
+            أصولي
+        </div>
+
+
+        <div class="asset">
+
+            <div class="asset-name">
+
+                <div class="coin">
+                    $
+                </div>
+
+                <div>
+                    <strong>USDT</strong>
+                    <span>USD Tether</span>
+                </div>
+
+            </div>
+
+            <div class="asset-value">
+                <strong>0.00 USDT</strong>
+                <span>$0.00</span>
+            </div>
+
+        </div>
+
+
+        <div class="asset">
+
+            <div class="asset-name">
+
+                <div class="coin">
+                    ₿
+                </div>
+
+                <div>
+                    <strong>BTC</strong>
+                    <span>Bitcoin</span>
+                </div>
+
+            </div>
+
+            <div class="asset-value">
+                <strong>0.000000 BTC</strong>
+                <span>$0.00</span>
+            </div>
+
+        </div>
+
+
+        <div class="asset">
+
+            <div class="asset-name">
+
+                <div class="coin">
+                    Ξ
+                </div>
+
+                <div>
+                    <strong>ETH</strong>
+                    <span>Ethereum</span>
+                </div>
+
+            </div>
+
+            <div class="asset-value">
+                <strong>0.000000 ETH</strong>
+                <span>$0.00</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="footer">
+        © 2026 TAJ TRADE — جميع الحقوق محفوظة
+    </div>
+
+</main>
+
+
+<script>
+
+    function deposit() {
+        alert(
+            "صفحة الإيداع سيتم ربطها بالنظام المالي وقاعدة البيانات لاحقًا."
+        );
+    }
+
+    function withdraw() {
+        alert(
+            "صفحة السحب سيتم ربطها بالنظام المالي وقاعدة البيانات لاحقًا."
+        );
+    }
+
+</script>
+
+</body>
+</html>
