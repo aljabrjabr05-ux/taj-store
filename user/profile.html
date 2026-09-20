@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الملف الشخصي | TAJ TRADE</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    background:#0b1118;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    height:70px;
+    background:#111a24;
+    border-bottom:1px solid #293747;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+}
+
+.logo{
+    color:#f5c542;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logo span{
+    display:block;
+    color:#fff;
+    font-size:11px;
+    margin-top:3px;
+    letter-spacing:1px;
+}
+
+.back{
+    color:#dbe4ee;
+    text-decoration:none;
+    border:1px solid #344454;
+    padding:9px 13px;
+    border-radius:10px;
+    font-size:13px;
+}
+
+.container{
+    max-width:850px;
+    margin:auto;
+    padding:22px 15px 100px;
+}
+
+.profile-card{
+    background:linear-gradient(135deg,#151f2b,#101720);
+    border:1px solid #293747;
+    border-radius:20px;
+    padding:25px 18px;
+    text-align:center;
+    margin-bottom:18px;
+}
+
+.avatar{
+    width:85px;
+    height:85px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#f5c542,#d49d00);
+    color:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+    font-weight:bold;
+}
+
+.name{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.username{
+    color:#94a3b8;
+    font-size:13px;
+    margin-top:5px;
+}
+
+.status{
+    display:inline-block;
+    margin-top:12px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#163522;
+    color:#5ee39a;
+    font-size:11px;
+}
+
+.section{
+    background:#121c27;
+    border:1px solid #293847;
+    border-radius:17px;
+    padding:18px;
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.info{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:13px;
+    background:#182330;
+    border-radius:11px;
+}
+
+.label{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.value{
+    color:#fff;
+    font-size:13px;
+    direction:ltr;
+}
+
+.edit-btn{
+    width:100%;
+    border:0;
+    background:#f5c542;
+    color:#111;
+    padding:13px;
+    border-radius:11px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.security{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.security-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:13px;
+    background:#182330;
+    border-radius:11px;
+}
+
+.security-icon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:#202f3f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.security-text{
+    flex:1;
+}
+
+.security-title{
+    font-size:13px;
+    font-weight:bold;
+}
+
+.security-sub{
+    color:#8190a2;
+    font-size:11px;
+    margin-top:4px;
+}
+
+.security-status{
+    color:#5ee39a;
+    font-size:11px;
+}
+
+.logout{
+    width:100%;
+    padding:13px;
+    border-radius:11px;
+    border:1px solid #713838;
+    background:#251619;
+    color:#ff8585;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:#101923;
+    border-top:1px solid #293847;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.nav-item{
+    text-decoration:none;
+    color:#8190a2;
+    text-align:center;
+    font-size:11px;
+}
+
+.nav-item div{
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+.nav-item.active{
+    color:#f5c542;
+}
+
+@media(max-width:500px){
+    .header{
+        height:64px;
+    }
+
+    .profile-card{
+        padding:22px 14px;
+    }
+
+    .name{
+        font-size:21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        TAJ TRADE
+        <span>SMART TRADING PLATFORM</span>
+    </div>
+
+    <a href="dashboard.html" class="back">
+        العودة
+    </a>
+
+</header>
+
+<main class="container">
+
+    <section class="profile-card">
+
+        <div class="avatar">T</div>
+
+        <div class="name">
+            مستخدم TAJ TRADE
+        </div>
+
+        <div class="username">
+            حساب المستخدم
+        </div>
+
+        <div class="status">
+            ● الحساب نشط
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-title">
+            👤 معلومات الحساب
+        </div>
+
+        <div class="info">
+
+            <div class="row">
+                <span class="label">الاسم</span>
+                <span class="value">مستخدم TAJ TRADE</span>
+            </div>
+
+            <div class="row">
+                <span class="label">البريد الإلكتروني</span>
+                <span class="value">user@example.com</span>
+            </div>
+
+            <div class="row">
+                <span class="label">رقم الهاتف</span>
+                <span class="value">+000 000 0000</span>
+            </div>
+
+            <div class="row">
+                <span class="label">رقم المستخدم</span>
+                <span class="value">TAJ-USER-0001</span>
+            </div>
+
+            <div class="row">
+                <span class="label">تاريخ التسجيل</span>
+                <span class="value">-- / -- / ----</span>
+            </div>
+
+        </div>
+
+        <button class="edit-btn" onclick="editProfile()">
+            ✏️ تعديل بيانات الحساب
+        </button>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-title">
+            🔐 الأمان والحماية
+        </div>
+
+        <div class="security">
+
+            <div class="security-item">
+
+                <div class="security-icon">🔑</div>
+
+                <div class="security-text">
+                    <div class="security-title">
+                        كلمة المرور
+                    </div>
+
+                    <div class="security-sub">
+                        كلمة المرور محمية
+                    </div>
+                </div>
+
+                <div class="security-status">
+                    محمي
+                </div>
+
+            </div>
+
+
+            <div class="security-item">
+
+                <div class="security-icon">📧</div>
+
+                <div class="security-text">
+                    <div class="security-title">
+                        البريد الإلكتروني
+                    </div>
+
+                    <div class="security-sub">
+                        التحقق من البريد الإلكتروني
+                    </div>
+                </div>
+
+                <div class="security-status">
+                    ✓
+                </div>
+
+            </div>
+
+
+            <div class="security-item">
+
+                <div class="security-icon">📱</div>
+
+                <div class="security-text">
+                    <div class="security-title">
+                        رقم الهاتف
+                    </div>
+
+                    <div class="security-sub">
+                        التحقق من رقم الهاتف
+                    </div>
+                </div>
+
+                <div class="security-status">
+                    ✓
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-title">
+            ⚙️ إعدادات الحساب
+        </div>
+
+        <div class="row" style="margin-bottom:10px;">
+            <span class="label">اللغة</span>
+            <span class="value">العربية</span>
+        </div>
+
+        <div class="row" style="margin-bottom:10px;">
+            <span class="label">الإشعارات</span>
+            <span class="value">مفعلة</span>
+        </div>
+
+        <div class="row">
+            <span class="label">حالة الحساب</span>
+            <span style="color:#5ee39a;font-size:13px;">نشط</span>
+        </div>
+
+    </section>
+
+
+    <button class="logout" onclick="logout()">
+        🚪 تسجيل الخروج
+    </button>
+
+</main>
+
+
+<nav class="bottom-nav">
+
+    <a class="nav-item" href="dashboard.html">
+        <div>🏠</div>
+        الرئيسية
+    </a>
+
+    <a class="nav-item" href="trading.html">
+        <div>📊</div>
+        التداول
+    </a>
+
+    <a class="nav-item" href="wallet.html">
+        <div>💼</div>
+        المحفظة
+    </a>
+
+    <a class="nav-item active" href="profile.html">
+        <div>👤</div>
+        الحساب
+    </a>
+
+</nav>
+
+
+<script>
+
+function editProfile(){
+
+    alert(
+        "سيتم تفعيل تعديل البيانات بعد ربط الحساب بقاعدة البيانات."
+    );
+
+}
+
+function logout(){
+
+    const confirmLogout =
+        confirm("هل تريد تسجيل الخروج من الحساب؟");
+
+    if(confirmLogout){
+
+        window.location.href =
+            "../index.html";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
