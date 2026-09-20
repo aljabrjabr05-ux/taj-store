@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAJ TRADE - التحقق من الهوية</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    background:#0b1020;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    background:linear-gradient(135deg,#111a35,#172653);
+    padding:22px 18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#f5c542;
+}
+
+.logo span{
+    color:#fff;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    padding:25px 18px 50px;
+}
+
+.card{
+    background:#121a30;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:24px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.title{
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#9da8c2;
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(245,197,66,.08);
+    border:1px solid rgba(245,197,66,.25);
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:25px;
+    color:#f5c542;
+}
+
+.section{
+    margin-top:22px;
+}
+
+.section h3{
+    font-size:17px;
+    margin-bottom:14px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#cbd3e6;
+    font-size:14px;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    margin-bottom:16px;
+    border-radius:10px;
+    border:1px solid #293653;
+    background:#0c1326;
+    color:#fff;
+    outline:none;
+}
+
+input:focus,select:focus{
+    border-color:#f5c542;
+}
+
+.upload{
+    border:2px dashed #35415e;
+    border-radius:14px;
+    padding:25px 15px;
+    text-align:center;
+    margin-bottom:16px;
+    transition:.2s;
+}
+
+.upload:hover{
+    border-color:#f5c542;
+}
+
+.upload-icon{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.upload p{
+    color:#aab4ca;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.upload input{
+    border:0;
+    background:transparent;
+    padding:5px;
+}
+
+.notice{
+    background:#0d162c;
+    border-radius:12px;
+    padding:15px;
+    color:#aeb9d0;
+    font-size:13px;
+    line-height:1.8;
+    margin-top:20px;
+}
+
+button{
+    width:100%;
+    border:0;
+    padding:16px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#f5c542,#dca719);
+    color:#111;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:22px;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:18px;
+    color:#9da8c2;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.back:hover{
+    color:#f5c542;
+}
+
+.footer{
+    text-align:center;
+    color:#66718a;
+    font-size:12px;
+    margin-top:25px;
+}
+
+.success{
+    display:none;
+    background:rgba(40,200,120,.1);
+    border:1px solid rgba(40,200,120,.3);
+    color:#5de0a0;
+    padding:15px;
+    border-radius:12px;
+    margin-top:18px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">TAJ <span>TRADE</span></div>
+</header>
+
+<main class="container">
+
+<div class="card">
+
+    <div class="title">التحقق من الهوية</div>
+
+    <div class="subtitle">
+        أكمل بيانات التحقق من الهوية لتفعيل حسابك والاستفادة من جميع خدمات منصة TAJ TRADE.
+    </div>
+
+    <div class="status">
+        🔐
+        <span>حالة التحقق: لم يتم التحقق بعد</span>
+    </div>
+
+    <form id="kycForm">
+
+        <div class="section">
+            <h3>المعلومات الشخصية</h3>
+
+            <label>الاسم الكامل</label>
+            <input type="text" id="fullname" placeholder="أدخل اسمك الكامل" required>
+
+            <label>تاريخ الميلاد</label>
+            <input type="date" id="birthdate" required>
+
+            <label>الجنسية</label>
+            <select id="nationality" required>
+                <option value="">اختر الجنسية</option>
+                <option>تركيا</option>
+                <option>العراق</option>
+                <option>سوريا</option>
+                <option>الأردن</option>
+                <option>السعودية</option>
+                <option>الإمارات</option>
+                <option>مصر</option>
+                <option>الكويت</option>
+                <option>قطر</option>
+                <option>البحرين</option>
+                <option>عمان</option>
+                <option>الجزائر</option>
+                <option>المغرب</option>
+                <option>تونس</option>
+                <option>ليبيا</option>
+                <option>فلسطين</option>
+                <option>لبنان</option>
+                <option>أخرى</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <h3>وثيقة الهوية</h3>
+
+            <label>نوع الوثيقة</label>
+            <select id="documentType" required>
+                <option value="">اختر نوع الوثيقة</option>
+                <option>جواز السفر</option>
+                <option>بطاقة الهوية</option>
+                <option>رخصة القيادة</option>
+            </select>
+
+            <label>رقم الوثيقة</label>
+            <input type="text" id="documentNumber"
+                   placeholder="أدخل رقم الوثيقة" required>
+        </div>
+
+        <div class="section">
+            <h3>رفع الوثائق</h3>
+
+            <div class="upload">
+                <div class="upload-icon">📄</div>
+                <p>صورة الوثيقة - الوجه الأمامي</p>
+                <input type="file" accept="image/*,.pdf" required>
+            </div>
+
+            <div class="upload">
+                <div class="upload-icon">📄</div>
+                <p>صورة الوثيقة - الوجه الخلفي</p>
+                <input type="file" accept="image/*,.pdf">
+            </div>
+
+            <div class="upload">
+                <div class="upload-icon">🤳</div>
+                <p>صورة شخصية للتحقق</p>
+                <input type="file" accept="image/*" required>
+            </div>
+        </div>
+
+        <div class="notice">
+            🛡️ يتم استخدام المعلومات والوثائق المقدمة لأغراض التحقق من الهوية
+            وحماية الحساب. تأكد من أن الصور واضحة وجميع البيانات ظاهرة.
+        </div>
+
+        <button type="submit">
+            إرسال طلب التحقق
+        </button>
+
+        <div class="success" id="success">
+            ✅ تم إرسال طلب التحقق بنجاح.
+            ستتم مراجعة بياناتك من قبل الإدارة.
+        </div>
+
+    </form>
+
+    <a href="dashboard.html" class="back">← العودة إلى لوحة التحكم</a>
+
+</div>
+
+<div class="footer">
+    © 2026 TAJ TRADE — جميع الحقوق محفوظة
+</div>
+
+</main>
+
+<script>
+document.getElementById("kycForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    document.getElementById("success").style.display = "block";
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+
+});
+</script>
+
+</body>
+</html>
