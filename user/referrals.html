@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAJ TRADE - الإحالات</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    background:#0b1118;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    background:#111a24;
+    padding:18px;
+    border-bottom:1px solid #263342;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#20d67b;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.user{
+    color:#aeb8c4;
+    font-size:14px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.title{
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.card{
+    background:#111a24;
+    border:1px solid #263342;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+.referral-box{
+    text-align:center;
+    background:linear-gradient(135deg,#142638,#0e1822);
+    border:1px solid #263b4d;
+}
+
+.referral-code{
+    margin:15px 0;
+    padding:15px;
+    border-radius:10px;
+    background:#0b1118;
+    color:#20d67b;
+    font-size:22px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.button{
+    display:block;
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    background:#20d67b;
+    color:#06110b;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.stat{
+    background:#0d151e;
+    border:1px solid #263342;
+    border-radius:12px;
+    padding:18px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    color:#20d67b;
+    font-size:25px;
+    margin-bottom:6px;
+}
+
+.stat span{
+    color:#9ba8b6;
+    font-size:13px;
+}
+
+.info{
+    color:#9ba8b6;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#111a24;
+    border-top:1px solid #263342;
+    display:flex;
+    justify-content:space-around;
+    padding:10px 4px;
+}
+
+.nav a{
+    color:#8f9baa;
+    text-decoration:none;
+    text-align:center;
+    font-size:12px;
+}
+
+.nav a span{
+    display:block;
+    font-size:20px;
+    margin-bottom:4px;
+}
+
+.nav a.active{
+    color:#20d67b;
+}
+
+.space{
+    height:80px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">TAJ TRADE</div>
+    <div class="user">حساب المستخدم</div>
+</header>
+
+<main class="container">
+
+    <div class="title">نظام الإحالات</div>
+
+    <section class="card referral-box">
+        <h3>رمز الدعوة الخاص بك</h3>
+
+        <div class="referral-code" id="referralCode">
+            TAJ2026
+        </div>
+
+        <button class="button" onclick="copyCode()">
+            نسخ رمز الدعوة
+        </button>
+    </section>
+
+    <section class="card">
+        <h3>إحصائيات الإحالات</h3>
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>0</strong>
+                <span>المستخدمون المدعوون</span>
+            </div>
+
+            <div class="stat">
+                <strong>$0.00</strong>
+                <span>أرباح الإحالات</span>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>كيف يعمل النظام؟</h3>
+
+        <p class="info">
+            شارك رمز الدعوة الخاص بك مع أصدقائك.
+            عند تسجيل مستخدم جديد باستخدام رمز الدعوة،
+            سيتم احتساب الإحالة في حسابك وفقًا لنظام المنصة.
+        </p>
+    </section>
+
+    <section class="card">
+        <h3>آخر الإحالات</h3>
+
+        <p class="info" style="text-align:center;">
+            لا توجد إحالات حتى الآن.
+        </p>
+    </section>
+
+    <div class="space"></div>
+
+</main>
+
+<nav class="nav">
+
+    <a href="dashboard.html">
+        <span>⌂</span>
+        الرئيسية
+    </a>
+
+    <a href="wallet.html">
+        <span>▣</span>
+        المحفظة
+    </a>
+
+    <a href="trading.html">
+        <span>📈</span>
+        التداول
+    </a>
+
+    <a href="trades.html">
+        <span>↕</span>
+        الصفقات
+    </a>
+
+    <a href="referrals.html" class="active">
+        <span>👥</span>
+        الإحالات
+    </a>
+
+</nav>
+
+<script>
+function copyCode(){
+    const code = document.getElementById("referralCode").innerText;
+
+    navigator.clipboard.writeText(code).then(function(){
+        alert("تم نسخ رمز الدعوة");
+    });
+}
+</script>
+
+</body>
+</html>
