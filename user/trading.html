@@ -1,929 +1,849 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>التداول | TAJ TRADE</title>
 
 <style>
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Tahoma,sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Tahoma,sans-serif;
 }
 
 body{
-    background:#070d16;
-    color:#fff;
-    min-height:100vh;
-    padding-bottom:80px;
+background:#070d16;
+color:#fff;
+min-height:100vh;
+padding-bottom:85px;
 }
 
 .header{
-    background:linear-gradient(135deg,#101b2b,#162738);
-    border-bottom:1px solid #263b52;
-    padding:18px;
+background:linear-gradient(135deg,#101b2b,#162738);
+border-bottom:1px solid #263b52;
+padding:16px;
 }
 
 .header-inner{
-    max-width:950px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+max-width:1100px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
 }
 
 .logo{
-    color:#20d67b;
-    font-size:24px;
-    font-weight:bold;
+font-size:24px;
+font-weight:bold;
+color:#20d67b;
 }
 
 .user{
-    color:#aebccc;
-    font-size:13px;
+font-size:13px;
+color:#aebccc;
 }
 
 .container{
-    max-width:950px;
-    margin:auto;
-    padding:20px 15px;
+max-width:1100px;
+margin:auto;
+padding:18px 15px;
 }
 
 .top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+margin-bottom:18px;
 }
 
 .title h1{
-    font-size:25px;
-    margin-bottom:6px;
+font-size:25px;
+margin-bottom:6px;
 }
 
 .title p{
-    color:#8291a4;
-    font-size:13px;
+color:#8e9baa;
+font-size:13px;
+}
+
+.back{
+color:#20d67b;
+text-decoration:none;
+font-size:14px;
 }
 
 .balance{
-    background:#111a27;
-    border:1px solid #263344;
-    border-radius:13px;
-    padding:12px 16px;
-    text-align:center;
+background:linear-gradient(135deg,#111a27,#142d3b);
+border:1px solid #263b52;
+border-radius:16px;
+padding:18px;
+margin-bottom:18px;
 }
 
-.balance small{
-    display:block;
-    color:#8291a4;
-    font-size:11px;
-    margin-bottom:5px;
+.balance-label{
+color:#8e9baa;
+font-size:13px;
+margin-bottom:7px;
 }
 
-.balance strong{
-    color:#20d67b;
-    font-size:18px;
+.balance-value{
+font-size:28px;
+font-weight:bold;
+color:#20d67b;
+}
+
+.balance-sub{
+margin-top:7px;
+font-size:12px;
+color:#8e9baa;
 }
 
 .market{
-    background:#111a27;
-    border:1px solid #263344;
-    border-radius:17px;
-    overflow:hidden;
-    margin-bottom:18px;
+background:#111a27;
+border:1px solid #263b52;
+border-radius:16px;
+padding:18px;
+margin-bottom:18px;
 }
 
 .market-head{
-    padding:15px;
-    border-bottom:1px solid #263344;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
 }
 
 .market-name{
-    font-size:18px;
-    font-weight:bold;
+font-size:20px;
+font-weight:bold;
+}
+
+.market-symbol{
+font-size:12px;
+color:#8291a4;
+margin-top:4px;
 }
 
 .price{
-    color:#20d67b;
-    font-weight:bold;
+text-align:left;
+}
+
+.price strong{
+font-size:23px;
+color:#20d67b;
+display:block;
+}
+
+.price span{
+font-size:12px;
+color:#20d67b;
 }
 
 .chart{
-    height:270px;
-    position:relative;
-    overflow:hidden;
-    background:
-        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-    background-size:45px 45px;
+height:220px;
+border:1px solid #23364a;
+border-radius:12px;
+background:
+linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+background-size:40px 40px;
+position:relative;
+overflow:hidden;
+margin-bottom:18px;
 }
 
-.chart svg{
-    width:100%;
-    height:100%;
+.chart-line{
+position:absolute;
+left:0;
+right:0;
+top:50%;
+height:100px;
+transform:translateY(-50%);
 }
 
-.chart-info{
-    position:absolute;
-    top:12px;
-    right:12px;
-    background:rgba(7,13,22,.8);
-    border:1px solid #263344;
-    border-radius:8px;
-    padding:7px 10px;
-    font-size:11px;
-    color:#8fa0b4;
+svg{
+width:100%;
+height:100%;
 }
 
-.controls{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
+.order{
+background:#111a27;
+border:1px solid #263b52;
+border-radius:16px;
+padding:18px;
+margin-bottom:18px;
 }
 
-.card{
-    background:#111a27;
-    border:1px solid #263344;
-    border-radius:17px;
-    padding:18px;
-    margin-bottom:18px;
+.order-title{
+font-size:18px;
+font-weight:bold;
+margin-bottom:15px;
 }
 
-.card h2{
-    font-size:17px;
-    margin-bottom:16px;
+.tabs{
+display:flex;
+gap:8px;
+margin-bottom:15px;
 }
 
-.form-group{
-    margin-bottom:14px;
+.tab{
+flex:1;
+padding:12px;
+border:1px solid #2a3d50;
+background:#0c141f;
+color:#aebccc;
+border-radius:10px;
+font-size:14px;
+cursor:pointer;
 }
 
-.form-group label{
-    display:block;
-    color:#91a0b3;
-    font-size:12px;
-    margin-bottom:7px;
+.tab.active.buy{
+background:#123d2c;
+border-color:#20d67b;
+color:#20d67b;
 }
 
-.input{
-    width:100%;
-    background:#0b121c;
-    border:1px solid #2a3b50;
-    color:#fff;
-    border-radius:10px;
-    padding:12px;
-    outline:none;
-    font-size:14px;
+.tab.active.sell{
+background:#401c25;
+border-color:#ff5364;
+color:#ff5364;
 }
 
-.input:focus{
-    border-color:#20d67b;
+.field{
+margin-bottom:13px;
 }
 
-.quick{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:7px;
-    margin-top:7px;
+.field label{
+display:block;
+font-size:12px;
+color:#91a0b1;
+margin-bottom:7px;
 }
 
-.quick button{
-    background:#182434;
-    border:1px solid #2a3b50;
-    color:#aebccc;
-    border-radius:8px;
-    padding:8px 3px;
-    cursor:pointer;
+.field input,
+.field select{
+width:100%;
+padding:13px;
+border-radius:10px;
+border:1px solid #2a3d50;
+background:#0a121c;
+color:#fff;
+outline:none;
+font-size:14px;
 }
 
-.quick button:hover{
-    border-color:#20d67b;
-    color:#20d67b;
+.field input:focus,
+.field select:focus{
+border-color:#20d67b;
 }
 
-.actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:18px;
-}
-
-.btn{
-    border:none;
-    border-radius:11px;
-    padding:14px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.buy{
-    background:#20d67b;
-    color:#06120c;
-}
-
-.sell{
-    background:#ff5266;
-    color:#fff;
-}
-
-.btn:active{
-    transform:scale(.98);
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
 }
 
 .order-info{
-    margin-top:16px;
-    border-top:1px solid #263344;
-    padding-top:14px;
+background:#0b131e;
+border-radius:10px;
+padding:13px;
+margin:15px 0;
 }
 
 .info-row{
-    display:flex;
-    justify-content:space-between;
-    padding:8px 0;
-    color:#91a0b3;
-    font-size:13px;
+display:flex;
+justify-content:space-between;
+padding:7px 0;
+font-size:13px;
+border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-.info-row strong{
-    color:#e5ebf2;
+.info-row:last-child{
+border-bottom:none;
 }
 
-.positions{
-    background:#111a27;
-    border:1px solid #263344;
-    border-radius:17px;
-    overflow:hidden;
+.info-row span:first-child{
+color:#8493a4;
 }
 
-.positions-title{
-    padding:16px;
-    font-size:17px;
-    font-weight:bold;
-    border-bottom:1px solid #263344;
+.info-row span:last-child{
+color:#fff;
 }
 
-.position{
-    padding:15px;
-    border-bottom:1px solid #202d3d;
+.trade-btn{
+width:100%;
+padding:15px;
+border:0;
+border-radius:11px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+color:#06110c;
+background:#20d67b;
 }
 
-.position:last-child{
-    border-bottom:none;
-}
-
-.position-head{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:10px;
-}
-
-.position-symbol{
-    font-weight:bold;
-}
-
-.position-type{
-    font-size:11px;
-    padding:5px 8px;
-    border-radius:6px;
-}
-
-.position-buy{
-    background:rgba(32,214,123,.12);
-    color:#20d67b;
-}
-
-.position-sell{
-    background:rgba(255,82,102,.12);
-    color:#ff5266;
-}
-
-.position-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-}
-
-.position-item{
-    background:#0b121c;
-    border-radius:8px;
-    padding:9px;
-}
-
-.position-item small{
-    display:block;
-    color:#718095;
-    font-size:10px;
-    margin-bottom:4px;
-}
-
-.position-item span{
-    font-size:12px;
-}
-
-.profit{
-    color:#20d67b !important;
-}
-
-.loss{
-    color:#ff5266 !important;
+.trade-btn.sell{
+background:#ff5364;
+color:#fff;
 }
 
 .notice{
-    display:none;
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    background:#152536;
-    border:1px solid #20d67b;
-    color:#fff;
-    border-radius:10px;
-    padding:12px 18px;
-    z-index:100;
-    font-size:13px;
+display:none;
+margin-top:12px;
+padding:12px;
+border-radius:10px;
+background:#10251d;
+border:1px solid #1d6949;
+color:#6ff0ac;
+font-size:13px;
+text-align:center;
 }
 
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    background:#0d1622;
-    border-top:1px solid #263344;
-    z-index:50;
+.positions{
+background:#111a27;
+border:1px solid #263b52;
+border-radius:16px;
+padding:18px;
+margin-bottom:18px;
 }
 
-.nav-inner{
-    max-width:950px;
-    margin:auto;
-    display:flex;
-    justify-content:space-around;
+.section-title{
+font-size:18px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.position{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 0;
+border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.position:last-child{
+border-bottom:none;
+}
+
+.position-name{
+font-weight:bold;
+}
+
+.position-type{
+font-size:12px;
+color:#20d67b;
+margin-top:4px;
+}
+
+.position-price{
+text-align:left;
+}
+
+.position-price strong{
+display:block;
+font-size:14px;
+}
+
+.position-price span{
+font-size:12px;
+color:#20d67b;
+}
+
+.empty{
+text-align:center;
+padding:20px;
+color:#728092;
+font-size:13px;
+}
+
+.footer-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:72px;
+background:#0d1622;
+border-top:1px solid #263b52;
+z-index:100;
+}
+
+.footer-inner{
+height:100%;
+max-width:700px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-around;
 }
 
 .nav-item{
-    text-decoration:none;
-    color:#718095;
-    text-align:center;
-    padding:10px 8px;
-    font-size:11px;
+text-decoration:none;
+color:#758496;
+font-size:11px;
+text-align:center;
+min-width:58px;
 }
 
 .nav-item span{
-    display:block;
-    font-size:18px;
-    margin-bottom:3px;
+display:block;
+font-size:21px;
+margin-bottom:3px;
 }
 
 .nav-item.active{
-    color:#20d67b;
+color:#20d67b;
 }
 
-@media(max-width:700px){
-
-    .top{
-        align-items:flex-start;
-        gap:10px;
-    }
-
-    .balance{
-        padding:10px;
-    }
-
-    .controls{
-        grid-template-columns:1fr;
-    }
-
-    .chart{
-        height:230px;
-    }
-
-    .position-grid{
-        grid-template-columns:1fr 1fr;
-    }
+@media(min-width:800px){
+.order-layout{
+display:grid;
+grid-template-columns:1.3fr .7fr;
+gap:18px;
+align-items:start;
 }
 
-@media(max-width:430px){
-
-    .title h1{
-        font-size:21px;
-    }
-
-    .balance strong{
-        font-size:15px;
-    }
-
-    .position-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
+.chart{
+height:360px;
+}
 }
 
+@media(max-width:500px){
+.container{
+padding:15px 12px;
+}
+
+.header{
+padding:14px 12px;
+}
+
+.logo{
+font-size:21px;
+}
+
+.balance-value{
+font-size:25px;
+}
+
+.market-head{
+align-items:flex-start;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+.chart{
+height:190px;
+}
+}
 </style>
 </head>
 
 <body>
 
 <header class="header">
-
-    <div class="header-inner">
-
-        <div class="logo">
-            TAJ TRADE
-        </div>
-
-        <div class="user">
-            حساب المستخدم
-        </div>
-
-    </div>
-
+<div class="header-inner">
+<div class="logo">TAJ TRADE</div>
+<div class="user">حساب المستخدم</div>
+</div>
 </header>
-
 
 <main class="container">
 
-    <div class="top">
-
-        <div class="title">
-            <h1>التداول</h1>
-            <p>تداول الأصول وإدارة صفقاتك</p>
-        </div>
+<div class="top">
+<div class="title">
+<h1>منصة التداول</h1>
+<p>تداول تجريبي وإدارة أوامرك بسهولة</p>
+</div>
 
-        <div class="balance">
-            <small>الرصيد المتاح</small>
-            <strong>$10,000.00</strong>
-        </div>
+<a href="dashboard.html" class="back">← الرئيسية</a>
+</div>
 
-    </div>
+<section class="balance">
+<div class="balance-label">الرصيد المتاح</div>
+<div class="balance-value" id="balance">$10,000.00</div>
+<div class="balance-sub">الحساب التجريبي • USD</div>
+</section>
 
+<div class="order-layout">
 
-    <section class="market">
+<div>
 
-        <div class="market-head">
+<section class="market">
 
-            <div class="market-name">
-                BTC / USDT
-            </div>
-
-            <div class="price">
-                $65,120.30
-            </div>
-
-        </div>
-
-
-        <div class="chart">
-
-            <div class="chart-info">
-                BTC/USDT · 1H
-            </div>
-
-            <svg viewBox="0 0 900 270"
-                 preserveAspectRatio="none">
-
-                <polyline
-                    points="
-                    0,210
-                    45,195
-                    90,205
-                    135,170
-                    180,185
-                    225,150
-                    270,160
-                    315,125
-                    360,140
-                    405,105
-                    450,120
-                    495,90
-                    540,105
-                    585,75
-                    630,92
-                    675,55
-                    720,72
-                    765,45
-                    810,62
-                    855,30
-                    900,45"
-                    fill="none"
-                    stroke="#20d67b"
-                    stroke-width="3"
-                />
-
-                <polyline
-                    points="
-                    0,225
-                    100,215
-                    200,200
-                    300,180
-                    400,155
-                    500,135
-                    600,115
-                    700,90
-                    800,72
-                    900,55"
-                    fill="none"
-                    stroke="#4da3ff"
-                    stroke-width="1.5"
-                    opacity=".5"
-                />
-
-            </svg>
-
-        </div>
-
-    </section>
-
-
-    <div class="controls">
-
-
-        <section class="card">
-
-            <h2>فتح صفقة</h2>
-
-
-            <div class="form-group">
-
-                <label>
-                    نوع الأمر
-                </label>
-
-                <select class="input" id="orderType">
-
-                    <option value="market">
-                        تنفيذ فوري
-                    </option>
-
-                    <option value="limit">
-                        أمر محدد
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    الكمية
-                </label>
-
-                <input
-                    class="input"
-                    id="quantity"
-                    type="number"
-                    placeholder="0.00"
-                    value="0.01"
-                    min="0"
-                    step="0.01"
-                >
-
-                <div class="quick">
-
-                    <button onclick="setQuantity(.01)">
-                        0.01
-                    </button>
-
-                    <button onclick="setQuantity(.05)">
-                        0.05
-                    </button>
-
-                    <button onclick="setQuantity(.10)">
-                        0.10
-                    </button>
-
-                    <button onclick="setQuantity(.50)">
-                        0.50
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    وقف الخسارة
-                </label>
-
-                <input
-                    class="input"
-                    type="number"
-                    placeholder="اختياري"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    جني الأرباح
-                </label>
-
-                <input
-                    class="input"
-                    type="number"
-                    placeholder="اختياري"
-                >
-
-            </div>
-
-
-            <div class="actions">
-
-                <button
-                    class="btn buy"
-                    onclick="openTrade('شراء')">
-                    شراء
-                </button>
-
-                <button
-                    class="btn sell"
-                    onclick="openTrade('بيع')">
-                    بيع
-                </button>
-
-            </div>
-
-
-            <div class="order-info">
-
-                <div class="info-row">
-                    <span>السعر الحالي</span>
-                    <strong>$65,120.30</strong>
-                </div>
-
-                <div class="info-row">
-                    <span>الحد الأدنى</span>
-                    <strong>0.001 BTC</strong>
-                </div>
-
-                <div class="info-row">
-                    <span>الرسوم التقديرية</span>
-                    <strong>$0.65</strong>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>معلومات السوق</h2>
-
-
-            <div class="info-row">
-                <span>أعلى سعر 24 ساعة</span>
-                <strong>$66,420.50</strong>
-            </div>
-
-            <div class="info-row">
-                <span>أدنى سعر 24 ساعة</span>
-                <strong>$63,880.20</strong>
-            </div>
-
-            <div class="info-row">
-                <span>التغير 24 ساعة</span>
-                <strong class="profit">+2.84%</strong>
-            </div>
-
-            <div class="info-row">
-                <span>حجم التداول</span>
-                <strong>$2.84B</strong>
-            </div>
-
-            <div class="info-row">
-                <span>آخر تحديث</span>
-                <strong id="time">الآن</strong>
-            </div>
-
-        </section>
-
-    </div>
-
-
-    <section class="positions">
-
-        <div class="positions-title">
-            الصفقات المفتوحة
-        </div>
-
-
-        <div class="position">
-
-            <div class="position-head">
-
-                <div>
-                    <span class="position-symbol">
-                        BTC/USDT
-                    </span>
-
-                    <span class="position-type position-buy">
-                        شراء
-                    </span>
-                </div>
-
-                <strong class="profit">
-                    +$42.80
-                </strong>
-
-            </div>
-
-
-            <div class="position-grid">
-
-                <div class="position-item">
-                    <small>سعر الدخول</small>
-                    <span>$64,280.50</span>
-                </div>
-
-                <div class="position-item">
-                    <small>السعر الحالي</small>
-                    <span>$65,120.30</span>
-                </div>
-
-                <div class="position-item">
-                    <small>الكمية</small>
-                    <span>0.05 BTC</span>
-                </div>
-
-                <div class="position-item">
-                    <small>الرافعة</small>
-                    <span>1x</span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="position">
-
-            <div class="position-head">
-
-                <div>
-                    <span class="position-symbol">
-                        ETH/USDT
-                    </span>
-
-                    <span class="position-type position-sell">
-                        بيع
-                    </span>
-                </div>
-
-                <strong class="loss">
-                    -$8.40
-                </strong>
-
-            </div>
-
-
-            <div class="position-grid">
-
-                <div class="position-item">
-                    <small>سعر الدخول</small>
-                    <span>$3,420.80</span>
-                </div>
-
-                <div class="position-item">
-                    <small>السعر الحالي</small>
-                    <span>$3,441.80</span>
-                </div>
-
-                <div class="position-item">
-                    <small>الكمية</small>
-                    <span>0.40 ETH</span>
-                </div>
-
-                <div class="position-item">
-                    <small>الرافعة</small>
-                    <span>1x</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+<div class="market-head">
+<div>
+<div class="market-name" id="marketName">Bitcoin</div>
+<div class="market-symbol" id="marketSymbol">BTC / USDT</div>
+</div>
+
+<div class="price">
+<strong id="currentPrice">$67,420.50</strong>
+<span id="priceChange">+2.48%</span>
+</div>
+</div>
+
+<div class="chart">
+
+<div class="chart-line">
+<svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+<polyline
+points="0,155 60,145 120,160 180,120 240,135 300,105 360,125 420,80 480,98 540,70 600,92 660,50 720,75 780,40 840,55 900,25 1000,45"
+fill="none"
+stroke="#20d67b"
+stroke-width="4"/>
+</svg>
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="field">
+<label>الأصل</label>
+<select id="asset" onchange="changeAsset()">
+<option value="btc">Bitcoin (BTC/USDT)</option>
+<option value="eth">Ethereum (ETH/USDT)</option>
+<option value="gold">Gold (XAU/USD)</option>
+<option value="eur">EUR/USD</option>
+</select>
+</div>
+
+<div class="field">
+<label>الفترة</label>
+<select>
+<option>1 دقيقة</option>
+<option>5 دقائق</option>
+<option selected>15 دقيقة</option>
+<option>1 ساعة</option>
+<option>4 ساعات</option>
+<option>يوم</option>
+</select>
+</div>
+
+</div>
+
+</section>
+
+<section class="positions">
+
+<div class="section-title">مراكز مفتوحة</div>
+
+<div id="positions">
+
+<div class="empty" id="emptyPositions">
+لا توجد مراكز مفتوحة حاليًا
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<section class="order">
+
+<div class="order-title">تنفيذ أمر</div>
+
+<div class="tabs">
+
+<button class="tab active buy" id="buyTab" onclick="setSide('buy')">
+شراء
+</button>
+
+<button class="tab sell" id="sellTab" onclick="setSide('sell')">
+بيع
+</button>
+
+</div>
+
+<div class="field">
+<label>نوع الأمر</label>
+<select id="orderType">
+<option value="market">أمر سوق</option>
+<option value="limit">أمر محدد</option>
+</select>
+</div>
+
+<div class="field">
+<label>الكمية</label>
+<input
+type="number"
+id="quantity"
+value="0.01"
+min="0.0001"
+step="0.0001"
+oninput="updateTotal()">
+</div>
+
+<div class="field">
+<label>السعر</label>
+<input
+type="number"
+id="entryPrice"
+value="67420.50"
+step="0.01"
+oninput="updateTotal()">
+</div>
+
+<div class="row">
+
+<div class="field">
+<label>وقف الخسارة</label>
+<input type="number" placeholder="اختياري" id="stopLoss">
+</div>
+
+<div class="field">
+<label>جني الربح</label>
+<input type="number" placeholder="اختياري" id="takeProfit">
+</div>
+
+</div>
+
+<div class="order-info">
+
+<div class="info-row">
+<span>قيمة الصفقة</span>
+<span id="total">$674.21</span>
+</div>
+
+<div class="info-row">
+<span>الرسوم التقديرية</span>
+<span id="fee">$0.67</span>
+</div>
+
+<div class="info-row">
+<span>الهامش المطلوب</span>
+<span id="margin">$674.21</span>
+</div>
+
+</div>
+
+<button class="trade-btn" id="tradeButton" onclick="executeTrade()">
+تأكيد الشراء
+</button>
+
+<div class="notice" id="notice"></div>
+
+</section>
+
+</div>
 
 </main>
 
+<nav class="footer-nav">
 
-<div id="notice" class="notice">
-    تم إرسال أمر التداول بنجاح
+<div class="footer-inner">
+
+<a href="dashboard.html" class="nav-item">
+<span>⌂</span>
+الرئيسية
+</a>
+
+<a href="trading.html" class="nav-item active">
+<span>↗</span>
+التداول
+</a>
+
+<a href="trades.html" class="nav-item">
+<span>▤</span>
+الصفقات
+</a>
+
+<a href="wallet.html" class="nav-item">
+<span>◈</span>
+المحفظة
+</a>
+
+<a href="profile.html" class="nav-item">
+<span>●</span>
+حسابي
+</a>
+
 </div>
-
-
-<nav class="bottom-nav">
-
-    <div class="nav-inner">
-
-        <a class="nav-item" href="dashboard.html">
-            <span>⌂</span>
-            الرئيسية
-        </a>
-
-        <a class="nav-item" href="wallet.html">
-            <span>▣</span>
-            المحفظة
-        </a>
-
-        <a class="nav-item active" href="trading.html">
-            <span>↗</span>
-            التداول
-        </a>
-
-        <a class="nav-item" href="trades.html">
-            <span>☷</span>
-            الصفقات
-        </a>
-
-        <a class="nav-item" href="profile.html">
-            <span>●</span>
-            الحساب
-        </a>
-
-    </div>
 
 </nav>
 
-
 <script>
 
-function setQuantity(value){
+let side="buy";
 
-    document.getElementById("quantity").value = value;
+let balance=10000;
+
+const assets={
+btc:{
+name:"Bitcoin",
+symbol:"BTC / USDT",
+price:67420.50,
+change:"+2.48%"
+},
+eth:{
+name:"Ethereum",
+symbol:"ETH / USDT",
+price:2580.40,
+change:"+1.82%"
+},
+gold:{
+name:"Gold",
+symbol:"XAU / USD",
+price:2684.30,
+change:"+0.64%"
+},
+eur:{
+name:"Euro",
+symbol:"EUR / USD",
+price:1.1742,
+change:"+0.31%"
+}
+};
+
+function setSide(type){
+
+side=type;
+
+const buy=document.getElementById("buyTab");
+const sell=document.getElementById("sellTab");
+const button=document.getElementById("tradeButton");
+
+buy.classList.remove("active");
+sell.classList.remove("active");
+
+if(type==="buy"){
+buy.classList.add("active");
+button.classList.remove("sell");
+button.textContent="تأكيد الشراء";
+}else{
+sell.classList.add("active");
+button.classList.add("sell");
+button.textContent="تأكيد البيع";
+}
 
 }
 
+function changeAsset(){
 
-function openTrade(type){
+const value=document.getElementById("asset").value;
+const asset=assets[value];
 
-    const quantity =
-        document.getElementById("quantity").value;
+document.getElementById("marketName").textContent=asset.name;
+document.getElementById("marketSymbol").textContent=asset.symbol;
+document.getElementById("currentPrice").textContent="$"+asset.price.toLocaleString();
+document.getElementById("priceChange").textContent=asset.change;
 
-    if(!quantity || Number(quantity) <= 0){
+document.getElementById("entryPrice").value=asset.price;
 
-        showNotice("يرجى إدخال كمية صحيحة");
-
-        return;
-    }
-
-    showNotice(
-        "تم إرسال أمر " +
-        type +
-        " بكمية " +
-        quantity +
-        " BTC"
-    );
+updateTotal();
 
 }
 
+function updateTotal(){
+
+const quantity=parseFloat(document.getElementById("quantity").value)||0;
+const price=parseFloat(document.getElementById("entryPrice").value)||0;
+
+const total=quantity*price;
+const fee=total*0.001;
+
+document.getElementById("total").textContent=
+"$"+total.toLocaleString(undefined,{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+
+document.getElementById("fee").textContent=
+"$"+fee.toLocaleString(undefined,{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+
+document.getElementById("margin").textContent=
+"$"+total.toLocaleString(undefined,{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+
+}
+
+function executeTrade(){
+
+const quantity=parseFloat(document.getElementById("quantity").value)||0;
+const price=parseFloat(document.getElementById("entryPrice").value)||0;
+
+if(quantity<=0){
+showNotice("يرجى إدخال كمية صحيحة");
+return;
+}
+
+const total=quantity*price;
+
+if(side==="buy" && total>balance){
+showNotice("الرصيد غير كافٍ لتنفيذ الصفقة");
+return;
+}
+
+if(side==="buy"){
+balance-=total;
+}else{
+balance+=total;
+}
+
+document.getElementById("balance").textContent=
+"$"+balance.toLocaleString(undefined,{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+
+const positions=document.getElementById("positions");
+
+document.getElementById("emptyPositions").style.display="none";
+
+const asset=document.getElementById("asset");
+const assetText=asset.options[asset.selectedIndex].text;
+
+const position=document.createElement("div");
+
+position.className="position";
+
+position.innerHTML=`
+<div>
+<div class="position-name">${assetText}</div>
+<div class="position-type">${side==="buy"?"شراء":"بيع"} • ${quantity}</div>
+</div>
+
+<div class="position-price">
+<strong>$${price.toLocaleString()}</strong>
+<span>${side==="buy"?"+0.00%":"-0.00%"}</span>
+</div>
+`;
+
+positions.appendChild(position);
+
+showNotice(
+side==="buy"
+?"تم تنفيذ أمر الشراء بنجاح"
+:"تم تنفيذ أمر البيع بنجاح"
+);
+
+}
 
 function showNotice(message){
 
-    const notice =
-        document.getElementById("notice");
+const notice=document.getElementById("notice");
 
-    notice.textContent = message;
+notice.textContent=message;
+notice.style.display="block";
 
-    notice.style.display = "block";
-
-    setTimeout(function(){
-
-        notice.style.display = "none";
-
-    },3000);
+setTimeout(function(){
+notice.style.display="none";
+},3500);
 
 }
 
-
-function updateTime(){
-
-    const now = new Date();
-
-    document.getElementById("time").textContent =
-        now.toLocaleTimeString("ar-SA");
-
-}
-
-updateTime();
-
-setInterval(updateTime,1000);
+updateTotal();
 
 </script>
 
