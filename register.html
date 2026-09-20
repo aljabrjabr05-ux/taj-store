@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إنشاء حساب | تاج</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top right,#253c68 0%,transparent 35%),
+        radial-gradient(circle at bottom left,#183f43 0%,transparent 35%),
+        #080d16;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:470px;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:22px;
+}
+
+.logo-icon{
+    width:68px;
+    height:68px;
+    margin:auto;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#ffd76a,#c99728);
+    color:#111;
+    font-size:30px;
+    font-weight:bold;
+    box-shadow:0 10px 35px rgba(255,200,60,.25);
+}
+
+.logo h1{
+    margin-top:12px;
+    font-size:28px;
+}
+
+.logo p{
+    margin-top:6px;
+    color:#9ca8bc;
+    font-size:14px;
+}
+
+.card{
+    background:rgba(17,24,38,.94);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+.card h2{
+    text-align:center;
+    margin-bottom:8px;
+    font-size:23px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#8f9bb0;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin:0 0 8px;
+    color:#dce3ef;
+    font-size:14px;
+}
+
+.field{
+    margin-bottom:17px;
+}
+
+input{
+    width:100%;
+    height:50px;
+    border-radius:13px;
+    border:1px solid #293449;
+    background:#0c1320;
+    color:#fff;
+    padding:0 15px;
+    outline:none;
+    font-size:15px;
+    transition:.2s;
+}
+
+input:focus{
+    border-color:#d8ad45;
+    box-shadow:0 0 0 3px rgba(216,173,69,.10);
+}
+
+.verify-row{
+    display:flex;
+    gap:9px;
+}
+
+.verify-row input{
+    flex:1;
+}
+
+.verify-btn{
+    width:125px;
+    border:0;
+    border-radius:13px;
+    background:#202c40;
+    color:#e9c96a;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.verify-btn:hover{
+    background:#29374e;
+}
+
+.invite{
+    position:relative;
+}
+
+.optional{
+    color:#78859a;
+    font-size:11px;
+    margin-right:5px;
+}
+
+.terms{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    margin:5px 0 20px;
+    color:#8f9bb0;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.terms input{
+    width:17px;
+    height:17px;
+    margin-top:2px;
+    accent-color:#d8ad45;
+}
+
+.terms a{
+    color:#e4bd5c;
+    text-decoration:none;
+}
+
+.register-btn{
+    width:100%;
+    height:52px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(135deg,#f1cf68,#bd8b27);
+    color:#111;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(218,170,57,.18);
+}
+
+.register-btn:hover{
+    filter:brightness(1.08);
+}
+
+.login{
+    text-align:center;
+    margin-top:20px;
+    color:#8995a9;
+    font-size:13px;
+}
+
+.login a{
+    color:#e4bd5c;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.message{
+    display:none;
+    margin-bottom:15px;
+    padding:12px;
+    border-radius:11px;
+    background:rgba(48,180,120,.10);
+    border:1px solid rgba(48,180,120,.25);
+    color:#70d6a7;
+    font-size:13px;
+    text-align:center;
+}
+
+@media(max-width:500px){
+    .card{
+        padding:22px 18px;
+    }
+
+    .verify-btn{
+        width:105px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <div class="logo-icon">ت</div>
+        <h1>تاج</h1>
+        <p>منصتك الرقمية الذكية</p>
+    </div>
+
+    <div class="card">
+
+        <h2>إنشاء حساب جديد</h2>
+        <div class="subtitle">
+            أنشئ حسابك وابدأ رحلتك معنا
+        </div>
+
+        <div id="message" class="message">
+            تم إرسال رمز التحقق بنجاح
+        </div>
+
+        <form id="registerForm">
+
+            <div class="field">
+                <label>البريد الإلكتروني أو رقم الهاتف</label>
+                <input
+                    type="text"
+                    id="contact"
+                    placeholder="example@email.com أو رقم الهاتف"
+                    required>
+            </div>
+
+            <div class="field">
+                <label>كلمة المرور</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="أدخل كلمة مرور قوية"
+                    minlength="6"
+                    required>
+            </div>
+
+            <div class="field">
+                <label>رمز التحقق</label>
+
+                <div class="verify-row">
+                    <input
+                        type="text"
+                        id="code"
+                        placeholder="أدخل الرمز"
+                        maxlength="6"
+                        required>
+
+                    <button
+                        type="button"
+                        class="verify-btn"
+                        id="sendCode">
+                        إرسال الرمز
+                    </button>
+                </div>
+            </div>
+
+            <div class="field invite">
+                <label>
+                    رمز الدعوة
+                    <span class="optional">(اختياري)</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="invite"
+                    placeholder="أدخل رمز الدعوة إن وجد">
+            </div>
+
+            <div class="terms">
+                <input type="checkbox" id="terms" required>
+
+                <span>
+                    أوافق على
+                    <a href="#">شروط الاستخدام</a>
+                    و
+                    <a href="#">سياسة الخصوصية</a>
+                </span>
+            </div>
+
+            <button type="submit" class="register-btn">
+                إنشاء الحساب
+            </button>
+
+        </form>
+
+        <div class="login">
+            لديك حساب بالفعل؟
+            <a href="login.html">تسجيل الدخول</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+const sendCode = document.getElementById("sendCode");
+const message = document.getElementById("message");
+
+sendCode.addEventListener("click", function(){
+
+    const contact = document.getElementById("contact").value.trim();
+
+    if(!contact){
+        alert("يرجى إدخال البريد الإلكتروني أو رقم الهاتف أولاً");
+        return;
+    }
+
+    sendCode.disabled = true;
+
+    let seconds = 60;
+    sendCode.textContent = seconds + " ثانية";
+
+    message.style.display = "block";
+    message.textContent = "تم إرسال رمز التحقق. أدخل الرمز المرسل إليك.";
+
+    const timer = setInterval(function(){
+
+        seconds--;
+
+        sendCode.textContent = seconds + " ثانية";
+
+        if(seconds <= 0){
+
+            clearInterval(timer);
+
+            sendCode.disabled = false;
+            sendCode.textContent = "إرسال الرمز";
+        }
+
+    },1000);
+
+});
+
+
+document.getElementById("registerForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const contact = document.getElementById("contact").value.trim();
+    const password = document.getElementById("password").value;
+    const code = document.getElementById("code").value.trim();
+
+    if(!contact || !password || !code){
+        alert("يرجى إكمال جميع البيانات المطلوبة");
+        return;
+    }
+
+    message.style.display = "block";
+    message.textContent =
+        "تم استلام طلب إنشاء الحساب. سيتم تفعيل الحساب بعد الموافقة من الإدارة.";
+
+});
+
+</script>
+
+</body>
+</html>
