@@ -245,7 +245,50 @@
                 padding: 18px 8px;
             }
         }
-    </style>
+    .user-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 10px;
+    margin: 0 auto 25px;
+    background: #111a2e;
+    border-bottom: 1px solid #263451;
+}
+
+.user-nav a {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid #263451;
+    border-radius: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    background: #0b1220;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.user-nav a:hover {
+    color: #f5c542;
+    border-color: #f5c542;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .user-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 12px 8px;
+    }
+
+    .user-nav a {
+        text-align: center;
+        padding: 10px 6px;
+        font-size: 13px;
+    }
+}</style>
 </head>
 
 <body>
@@ -262,7 +305,13 @@
     </div>
 
 </header>
-
+<nav class="user-nav">
+    <a href="dashboard.html">🏠 الرئيسية</a>
+    <a href="trading.html">📊 التداول</a>
+    <a href="wallet.html">💰 المحفظة</a>
+    <a href="deposits.html">➕ الإيداع</a>
+    <a href="withdraw.html">💸 السحب</a>
+</nav>
 
 <main class="container">
 
