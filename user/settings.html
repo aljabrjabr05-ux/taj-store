@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الإعدادات | TAJ TRADE</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    background:#0b1118;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    background:linear-gradient(135deg,#101b27,#162738);
+    padding:22px 18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header h1{
+    font-size:24px;
+    margin-bottom:6px;
+}
+
+.header p{
+    color:#91a0b2;
+    font-size:14px;
+}
+
+.container{
+    padding:20px 15px 100px;
+    max-width:650px;
+    margin:auto;
+}
+
+.section{
+    background:#111c27;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+    margin-bottom:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.section-title{
+    padding:17px;
+    font-size:16px;
+    font-weight:bold;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:17px;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.row:last-child{
+    border-bottom:none;
+}
+
+.row-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#182838;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.label{
+    font-size:15px;
+}
+
+.description{
+    color:#8493a4;
+    font-size:12px;
+    margin-top:4px;
+}
+
+select{
+    background:#182838;
+    color:#fff;
+    border:1px solid #2a3b4d;
+    border-radius:10px;
+    padding:10px 12px;
+    outline:none;
+}
+
+input[type="checkbox"]{
+    width:48px;
+    height:25px;
+    appearance:none;
+    background:#263646;
+    border-radius:20px;
+    position:relative;
+    cursor:pointer;
+    transition:.25s;
+}
+
+input[type="checkbox"]::before{
+    content:"";
+    position:absolute;
+    width:19px;
+    height:19px;
+    background:#fff;
+    border-radius:50%;
+    top:3px;
+    right:3px;
+    transition:.25s;
+}
+
+input[type="checkbox"]:checked{
+    background:#19c37d;
+}
+
+input[type="checkbox"]:checked::before{
+    right:26px;
+}
+
+.button{
+    width:100%;
+    border:none;
+    border-radius:13px;
+    padding:15px;
+    background:linear-gradient(135deg,#19c37d,#0fa968);
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+.danger{
+    background:linear-gradient(135deg,#e74c3c,#c0392b);
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:#101923;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:10;
+}
+
+.bottom-nav a{
+    text-decoration:none;
+    color:#7f8d9c;
+    font-size:11px;
+    text-align:center;
+}
+
+.bottom-nav a span{
+    display:block;
+    font-size:21px;
+    margin-bottom:3px;
+}
+
+.bottom-nav .active{
+    color:#19c37d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>⚙️ الإعدادات</h1>
+    <p>تحكم في إعدادات حسابك ومنصة TAJ TRADE</p>
+</div>
+
+<div class="container">
+
+    <div class="section">
+        <div class="section-title">الإعدادات العامة</div>
+
+        <div class="row">
+            <div class="row-info">
+                <div class="icon">🌐</div>
+                <div>
+                    <div class="label">لغة المنصة</div>
+                    <div class="description">اختر اللغة التي تريد استخدامها</div>
+                </div>
+            </div>
+
+            <select id="language">
+                <option>العربية</option>
+                <option>English</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <div class="row-info">
+                <div class="icon">🌙</div>
+                <div>
+                    <div class="label">الوضع الليلي</div>
+                    <div class="description">استخدام المظهر الداكن للمنصة</div>
+                </div>
+            </div>
+
+            <input type="checkbox" checked>
+        </div>
+
+        <div class="row">
+            <div class="row-info">
+                <div class="icon">🔔</div>
+                <div>
+                    <div class="label">الإشعارات</div>
+                    <div class="description">استقبال إشعارات الحساب والعمليات</div>
+                </div>
+            </div>
+
+            <input type="checkbox" checked>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="section-title">الأمان</div>
+
+        <div class="row">
+            <div class="row-info">
+                <div class="icon">🔐</div>
+                <div>
+                    <div class="label">تسجيل الدخول الآمن</div>
+                    <div class="description">حماية إضافية للحساب</div>
+                </div>
+            </div>
+
+            <input type="checkbox" checked>
+        </div>
+
+        <div class="row">
+            <div class="row-info">
+                <div class="icon">🛡️</div>
+                <div>
+                    <div class="label">التحقق بخطوتين</div>
+                    <div class="description">استخدم رمز تحقق إضافي عند تسجيل الدخول</div>
+                </div>
+            </div>
+
+            <input type="checkbox">
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="section-title">الحساب</div>
+
+        <div class="row">
+            <div class="row-info">
+                <div class="icon">📱</div>
+                <div>
+                    <div class="label">الأجهزة المسجلة</div>
+                    <div class="description">إدارة الأجهزة التي دخلت إلى حسابك</div>
+                </div>
+            </div>
+
+            <span>›</span>
+        </div>
+
+        <div class="row">
+            <div class="row-info">
+                <div class="icon">🔑</div>
+                <div>
+                    <div class="label">تغيير كلمة المرور</div>
+                    <div class="description">تحديث كلمة مرور الحساب</div>
+                </div>
+            </div>
+
+            <span>›</span>
+        </div>
+    </div>
+
+
+    <button class="button" onclick="saveSettings()">
+        حفظ الإعدادات
+    </button>
+
+    <button class="button danger" onclick="logout()">
+        تسجيل الخروج
+    </button>
+
+</div>
+
+
+<div class="bottom-nav">
+
+    <a href="dashboard.html">
+        <span>🏠</span>
+        الرئيسية
+    </a>
+
+    <a href="trading.html">
+        <span>📈</span>
+        التداول
+    </a>
+
+    <a href="wallet.html">
+        <span>💰</span>
+        المحفظة
+    </a>
+
+    <a href="notifications.html">
+        <span>🔔</span>
+        الإشعارات
+    </a>
+
+    <a href="profile.html" class="active">
+        <span>👤</span>
+        حسابي
+    </a>
+
+</div>
+
+
+<script>
+
+function saveSettings(){
+
+    alert("تم حفظ الإعدادات بنجاح");
+
+}
+
+function logout(){
+
+    const confirmLogout = confirm("هل تريد تسجيل الخروج من حسابك؟");
+
+    if(confirmLogout){
+        window.location.href="../index.html";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
