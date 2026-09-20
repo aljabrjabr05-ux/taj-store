@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الإشعارات | TAJ TRADE</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    background:#0b1118;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    height:70px;
+    background:#111a24;
+    border-bottom:1px solid #263443;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:21px;
+    font-weight:bold;
+    color:#f5c542;
+}
+
+.logo span{
+    color:#fff;
+    font-size:12px;
+    display:block;
+    margin-top:3px;
+    letter-spacing:1px;
+}
+
+.back{
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:14px;
+    padding:9px 13px;
+    border:1px solid #334155;
+    border-radius:10px;
+}
+
+.container{
+    width:100%;
+    max-width:850px;
+    margin:auto;
+    padding:22px 15px 100px;
+}
+
+.title-box{
+    background:linear-gradient(135deg,#151f2b,#101720);
+    border:1px solid #293747;
+    border-radius:18px;
+    padding:22px 18px;
+    margin-bottom:18px;
+}
+
+.title{
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:10px 15px;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.btn-main{
+    background:#f5c542;
+    color:#111;
+}
+
+.btn-dark{
+    background:#1c2835;
+    color:#dbe4ee;
+    border:1px solid #344454;
+}
+
+.notifications{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.notification{
+    background:#121c27;
+    border:1px solid #293847;
+    border-radius:15px;
+    padding:17px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    transition:.2s;
+}
+
+.notification:hover{
+    border-color:#536579;
+    transform:translateY(-1px);
+}
+
+.notification.unread{
+    border-right:4px solid #f5c542;
+}
+
+.icon{
+    min-width:45px;
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    background:#1d2a38;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.content{
+    flex:1;
+}
+
+.notification-title{
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.notification-text{
+    color:#aebaca;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.time{
+    color:#64748b;
+    font-size:11px;
+    margin-top:8px;
+}
+
+.badge{
+    background:#f5c542;
+    color:#111;
+    font-size:9px;
+    padding:4px 7px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:60px 20px;
+    background:#121c27;
+    border:1px solid #293847;
+    border-radius:15px;
+    color:#94a3b8;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:#101923;
+    border-top:1px solid #293847;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:20;
+}
+
+.nav-item{
+    color:#8190a2;
+    text-decoration:none;
+    font-size:11px;
+    text-align:center;
+}
+
+.nav-item div{
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+.nav-item.active{
+    color:#f5c542;
+}
+
+@media(max-width:500px){
+    .header{
+        height:64px;
+    }
+
+    .title{
+        font-size:21px;
+    }
+
+    .notification{
+        padding:14px;
+    }
+
+    .icon{
+        min-width:40px;
+        width:40px;
+        height:40px;
+        font-size:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        TAJ TRADE
+        <span>SMART TRADING PLATFORM</span>
+    </div>
+
+    <a class="back" href="dashboard.html">العودة للوحة التحكم</a>
+</header>
+
+<main class="container">
+
+    <section class="title-box">
+        <div class="title">🔔 الإشعارات</div>
+        <div class="subtitle">
+            تابع آخر التنبيهات والتحديثات المتعلقة بحسابك ومنصة TAJ TRADE.
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-main" onclick="markAllRead()">
+                ✓ تحديد الكل كمقروء
+            </button>
+
+            <button class="btn btn-dark" onclick="clearNotifications()">
+                🗑 حذف الإشعارات
+            </button>
+        </div>
+    </section>
+
+    <section class="notifications" id="notifications">
+
+        <div class="notification unread">
+            <div class="icon">💰</div>
+
+            <div class="content">
+                <div class="notification-title">
+                    تم تحديث رصيد حسابك
+                    <span class="badge">جديد</span>
+                </div>
+
+                <div class="notification-text">
+                    تم تحديث بيانات الرصيد في حسابك بنجاح.
+                </div>
+
+                <div class="time">منذ دقائق</div>
+            </div>
+        </div>
+
+        <div class="notification unread">
+            <div class="icon">🔐</div>
+
+            <div class="content">
+                <div class="notification-title">
+                    تنبيه أمني
+                    <span class="badge">جديد</span>
+                </div>
+
+                <div class="notification-text">
+                    تم تسجيل دخول جديد إلى حسابك. إذا لم تكن أنت، يرجى التواصل مع الإدارة فورًا.
+                </div>
+
+                <div class="time">منذ ساعة</div>
+            </div>
+        </div>
+
+        <div class="notification">
+            <div class="icon">📈</div>
+
+            <div class="content">
+                <div class="notification-title">
+                    تحديث منصة التداول
+                </div>
+
+                <div class="notification-text">
+                    تم تحديث قسم التداول وإضافة تحسينات جديدة على تجربة المستخدم.
+                </div>
+
+                <div class="time">أمس</div>
+            </div>
+        </div>
+
+        <div class="notification">
+            <div class="icon">💳</div>
+
+            <div class="content">
+                <div class="notification-title">
+                    نظام الإيداع والسحب
+                </div>
+
+                <div class="notification-text">
+                    يمكنك متابعة طلبات الإيداع والسحب من خلال قسم المحفظة.
+                </div>
+
+                <div class="time">منذ يومين</div>
+            </div>
+        </div>
+
+        <div class="notification">
+            <div class="icon">🎁</div>
+
+            <div class="content">
+                <div class="notification-title">
+                    برنامج الإحالة
+                </div>
+
+                <div class="notification-text">
+                    يمكنك دعوة مستخدمين جدد ومتابعة الإحالات والمكافآت من قسم الإحالات.
+                </div>
+
+                <div class="time">منذ 3 أيام</div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="empty" id="empty">
+        🔔<br><br>
+        لا توجد إشعارات حاليًا.
+    </div>
+
+</main>
+
+<nav class="bottom-nav">
+
+    <a class="nav-item" href="dashboard.html">
+        <div>🏠</div>
+        الرئيسية
+    </a>
+
+    <a class="nav-item" href="trading.html">
+        <div>📊</div>
+        التداول
+    </a>
+
+    <a class="nav-item" href="wallet.html">
+        <div>💼</div>
+        المحفظة
+    </a>
+
+    <a class="nav-item active" href="notifications.html">
+        <div>🔔</div>
+        الإشعارات
+    </a>
+
+</nav>
+
+<script>
+
+function markAllRead(){
+
+    const notifications =
+        document.querySelectorAll(".notification");
+
+    notifications.forEach(function(item){
+
+        item.classList.remove("unread");
+
+        const badge = item.querySelector(".badge");
+
+        if(badge){
+            badge.remove();
+        }
+
+    });
+
+}
+
+function clearNotifications(){
+
+    const box =
+        document.getElementById("notifications");
+
+    const empty =
+        document.getElementById("empty");
+
+    box.innerHTML = "";
+
+    empty.style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
