@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAJ TRADE - تسجيل الدخول</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,Tahoma,sans-serif;
+    background:
+        radial-gradient(circle at top right,#173c65 0%,transparent 35%),
+        radial-gradient(circle at bottom left,#24145c 0%,transparent 35%),
+        #070d18;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:22px;
+}
+
+.logo .mark{
+    width:70px;
+    height:70px;
+    margin:auto;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#16d9a5,#1689ff);
+    font-size:32px;
+    font-weight:bold;
+    box-shadow:0 15px 40px rgba(0,180,255,.25);
+}
+
+.logo h1{
+    margin-top:12px;
+    font-size:28px;
+    letter-spacing:1px;
+}
+
+.logo p{
+    color:#8fa4bd;
+    margin-top:6px;
+}
+
+.card{
+    background:rgba(15,25,40,.92);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
+    backdrop-filter:blur(15px);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:8px;
+    font-size:24px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#91a4ba;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.tab{
+    flex:1;
+    padding:12px;
+    border:1px solid #26384d;
+    border-radius:12px;
+    background:#0b1523;
+    color:#9eb0c4;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.tab.active{
+    background:#122b43;
+    border-color:#16d9a5;
+    color:#fff;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#c8d5e4;
+    font-size:14px;
+}
+
+.input-group{
+    margin-bottom:17px;
+}
+
+input{
+    width:100%;
+    padding:14px 15px;
+    border-radius:12px;
+    border:1px solid #293d54;
+    background:#09131f;
+    color:#fff;
+    outline:none;
+    font-size:15px;
+    transition:.2s;
+}
+
+input:focus{
+    border-color:#16d9a5;
+    box-shadow:0 0 0 3px rgba(22,217,165,.08);
+}
+
+input::placeholder{
+    color:#62758b;
+}
+
+.password-row{
+    position:relative;
+}
+
+.password-row input{
+    padding-left:50px;
+}
+
+.show-password{
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    border:0;
+    background:none;
+    color:#7f93aa;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.code-row{
+    display:flex;
+    gap:10px;
+}
+
+.code-row input{
+    flex:1;
+}
+
+.send-code{
+    min-width:110px;
+    border:1px solid #236080;
+    border-radius:12px;
+    background:#102a40;
+    color:#65d8ff;
+    cursor:pointer;
+}
+
+.login-btn{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:15px;
+    margin-top:5px;
+    background:linear-gradient(135deg,#16d9a5,#1689ff);
+    color:#04101c;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(22,180,220,.2);
+}
+
+.login-btn:active{
+    transform:scale(.99);
+}
+
+.links{
+    text-align:center;
+    margin-top:20px;
+    font-size:14px;
+}
+
+.links a{
+    color:#54d8ff;
+    text-decoration:none;
+}
+
+.notice{
+    display:none;
+    margin-top:18px;
+    padding:13px;
+    border-radius:12px;
+    background:#132b25;
+    border:1px solid #1e7058;
+    color:#8ff0d0;
+    text-align:center;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:#62758b;
+    font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <div class="mark">T</div>
+        <h1>TAJ TRADE</h1>
+        <p>منصة التداول الذكية</p>
+    </div>
+
+    <div class="card">
+
+        <h2>تسجيل الدخول</h2>
+        <div class="subtitle">
+            ادخل إلى حسابك في TAJ TRADE
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="setLoginType('email',this)">
+                البريد الإلكتروني
+            </button>
+
+            <button class="tab" onclick="setLoginType('phone',this)">
+                رقم الهاتف
+            </button>
+        </div>
+
+        <form id="loginForm" onsubmit="login(event)">
+
+            <div class="input-group">
+                <label id="accountLabel">البريد الإلكتروني</label>
+
+                <input
+                    id="account"
+                    type="email"
+                    placeholder="example@email.com"
+                    autocomplete="username"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <label>كلمة السر</label>
+
+                <div class="password-row">
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="أدخل كلمة السر"
+                        autocomplete="current-password"
+                        required>
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        onclick="togglePassword()">◉</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>رمز التحقق</label>
+
+                <div class="code-row">
+                    <input
+                        id="code"
+                        type="text"
+                        inputmode="numeric"
+                        maxlength="6"
+                        placeholder="000000"
+                        required>
+
+                    <button
+                        type="button"
+                        class="send-code"
+                        onclick="sendCode()">
+                        إرسال الرمز
+                    </button>
+                </div>
+            </div>
+
+            <button class="login-btn" type="submit">
+                تسجيل الدخول
+            </button>
+
+        </form>
+
+        <div id="notice" class="notice"></div>
+
+        <div class="links">
+            <a href="#">نسيت كلمة السر؟</a>
+            <br><br>
+            ليس لديك حساب؟
+            <a href="register.html">إنشاء حساب جديد</a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 TAJ TRADE — جميع الحقوق محفوظة
+    </div>
+
+</div>
+
+<script>
+
+let loginType = "email";
+
+function setLoginType(type, button){
+
+    loginType = type;
+
+    document.querySelectorAll(".tab").forEach(function(tab){
+        tab.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const account = document.getElementById("account");
+    const label = document.getElementById("accountLabel");
+
+    if(type === "email"){
+
+        label.textContent = "البريد الإلكتروني";
+        account.type = "email";
+        account.placeholder = "example@email.com";
+
+    }else{
+
+        label.textContent = "رقم الهاتف";
+        account.type = "tel";
+        account.placeholder = "+90 5XX XXX XXXX";
+    }
+}
+
+function togglePassword(){
+
+    const password = document.getElementById("password");
+
+    if(password.type === "password"){
+        password.type = "text";
+    }else{
+        password.type = "password";
+    }
+}
+
+function sendCode(){
+
+    const account = document.getElementById("account").value.trim();
+    const notice = document.getElementById("notice");
+
+    if(!account){
+        notice.style.display = "block";
+        notice.textContent =
+            "أدخل البريد الإلكتروني أو رقم الهاتف أولاً.";
+        return;
+    }
+
+    notice.style.display = "block";
+    notice.textContent =
+        "تم طلب إرسال رمز التحقق. عند ربط النظام بالخادم سيتم إرسال الرمز فعليًا.";
+}
+
+function login(event){
+
+    event.preventDefault();
+
+    const notice = document.getElementById("notice");
+
+    notice.style.display = "block";
+    notice.textContent =
+        "تم استلام طلب تسجيل الدخول. سيتم تحويله إلى غرفة الإدارة للموافقة قبل دخول الحساب.";
+
+    /*
+      لاحقًا عند ربط قاعدة البيانات والخادم:
+      1. التحقق من الحساب.
+      2. التحقق من كلمة السر.
+      3. التحقق من رمز التحقق.
+      4. إرسال طلب الدخول إلى غرفة الإدارة.
+      5. انتظار موافقة الإدارة.
+      6. السماح للمستخدم بالدخول بعد الموافقة.
+    */
+}
+
+</script>
+
+</body>
+</html>
