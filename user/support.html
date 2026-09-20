@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدعم الفني | TAJ TRADE</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+body{
+    background:#0b1118;
+    color:#fff;
+    min-height:100vh;
+}
+
+.header{
+    background:linear-gradient(135deg,#101b27,#162738);
+    padding:22px 18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header h1{
+    font-size:24px;
+    margin-bottom:7px;
+}
+
+.header p{
+    color:#91a0b2;
+    font-size:14px;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    padding:20px 15px 100px;
+}
+
+.card{
+    background:#111c27;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+.card h2{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#8e9bab;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.contact{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:#172534;
+    border-radius:14px;
+    padding:15px;
+    margin-top:12px;
+}
+
+.icon{
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    background:#203447;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.contact-title{
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.contact-text{
+    color:#8e9bab;
+    font-size:12px;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    font-size:14px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    background:#0d1721;
+    color:#fff;
+    border:1px solid #293b4d;
+    border-radius:11px;
+    padding:13px;
+    outline:none;
+    font-size:14px;
+}
+
+textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#19c37d;
+}
+
+.button{
+    width:100%;
+    border:0;
+    border-radius:12px;
+    padding:14px;
+    margin-top:18px;
+    background:linear-gradient(135deg,#19c37d,#0fa968);
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.faq{
+    border-bottom:1px solid rgba(255,255,255,.06);
+    padding:15px 0;
+}
+
+.faq:last-child{
+    border-bottom:0;
+}
+
+.faq strong{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+}
+
+.faq span{
+    color:#8e9bab;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:#101923;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:10;
+}
+
+.bottom-nav a{
+    text-decoration:none;
+    color:#7f8d9c;
+    font-size:11px;
+    text-align:center;
+}
+
+.bottom-nav a span{
+    display:block;
+    font-size:21px;
+    margin-bottom:3px;
+}
+
+.bottom-nav .active{
+    color:#19c37d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🎧 الدعم الفني</h1>
+    <p>نحن هنا لمساعدتك في منصة TAJ TRADE</p>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>تواصل معنا</h2>
+        <p>
+            إذا واجهت أي مشكلة في الحساب أو الإيداع أو السحب أو التداول،
+            يمكنك التواصل مع فريق الدعم.
+        </p>
+
+        <div class="contact">
+            <div class="icon">💬</div>
+            <div>
+                <div class="contact-title">الدردشة مع الدعم</div>
+                <div class="contact-text">تواصل مع فريق الدعم مباشرة</div>
+            </div>
+        </div>
+
+        <div class="contact">
+            <div class="icon">📧</div>
+            <div>
+                <div class="contact-title">البريد الإلكتروني</div>
+                <div class="contact-text">support@taj-cyou.store</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <h2>إرسال طلب دعم</h2>
+        <p>اكتب تفاصيل المشكلة وسيقوم فريق الدعم بمراجعة طلبك.</p>
+
+        <form onsubmit="sendSupport(event)">
+
+            <label>نوع المشكلة</label>
+
+            <select id="category" required>
+                <option value="">اختر نوع المشكلة</option>
+                <option>مشكلة في تسجيل الدخول</option>
+                <option>الإيداع</option>
+                <option>السحب</option>
+                <option>التداول</option>
+                <option>الحساب</option>
+                <option>مشكلة أخرى</option>
+            </select>
+
+            <label>عنوان الطلب</label>
+
+            <input
+                type="text"
+                id="subject"
+                placeholder="اكتب عنوان المشكلة"
+                required
+            >
+
+            <label>تفاصيل المشكلة</label>
+
+            <textarea
+                id="message"
+                placeholder="اشرح المشكلة بالتفصيل..."
+                required
+            ></textarea>
+
+            <button class="button" type="submit">
+                إرسال طلب الدعم
+            </button>
+
+        </form>
+    </div>
+
+
+    <div class="card">
+
+        <h2>الأسئلة الشائعة</h2>
+
+        <div class="faq">
+            <strong>كيف يمكنني إيداع الأموال؟</strong>
+            <span>
+                انتقل إلى قسم الإيداع واختر طريقة الدفع المناسبة لك.
+            </span>
+        </div>
+
+        <div class="faq">
+            <strong>كيف يمكنني طلب سحب؟</strong>
+            <span>
+                افتح قسم السحب وأدخل المبلغ وطريقة السحب ثم أرسل الطلب.
+            </span>
+        </div>
+
+        <div class="faq">
+            <strong>لماذا لا أستطيع تسجيل الدخول؟</strong>
+            <span>
+                تأكد من صحة البريد الإلكتروني وكلمة المرور،
+                وإذا استمرت المشكلة تواصل مع الدعم.
+            </span>
+        </div>
+
+        <div class="faq">
+            <strong>أين أجد عمليات التداول؟</strong>
+            <span>
+                يمكنك مراجعة عملياتك من صفحة الصفقات.
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="bottom-nav">
+
+    <a href="dashboard.html">
+        <span>🏠</span>
+        الرئيسية
+    </a>
+
+    <a href="trading.html">
+        <span>📈</span>
+        التداول
+    </a>
+
+    <a href="wallet.html">
+        <span>💰</span>
+        المحفظة
+    </a>
+
+    <a href="notifications.html">
+        <span>🔔</span>
+        الإشعارات
+    </a>
+
+    <a href="profile.html" class="active">
+        <span>👤</span>
+        حسابي
+    </a>
+
+</div>
+
+
+<script>
+
+function sendSupport(event){
+
+    event.preventDefault();
+
+    const category =
+        document.getElementById("category").value;
+
+    const subject =
+        document.getElementById("subject").value;
+
+    const message =
+        document.getElementById("message").value;
+
+    if(!category || !subject || !message){
+        alert("يرجى تعبئة جميع البيانات");
+        return;
+    }
+
+    alert("تم إرسال طلب الدعم بنجاح");
+
+    document.querySelector("form").reset();
+}
+
+</script>
+
+</body>
+</html>
