@@ -1,0 +1,282 @@
+taj-store / user / deposits.html<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الإيداع - TAJ TRADE</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.header {
+    background: #111827;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #263244;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #f5c542;
+}
+
+.back {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.container {
+    width: 92%;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.title h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.title p {
+    color: #94a3b8;
+}
+
+.card {
+    background: #172033;
+    border: 1px solid #263244;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 18px;
+}
+
+.card h2 {
+    font-size: 19px;
+    margin-bottom: 18px;
+    color: #f5c542;
+}
+
+.balance {
+    display: flex;
+    justify-content: space-between;
+    background: #0f172a;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.balance span:last-child {
+    color: #f5c542;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    background: #0f172a;
+    color: #fff;
+    outline: none;
+    margin-bottom: 16px;
+}
+
+input:focus, select:focus {
+    border-color: #f5c542;
+}
+
+.methods {
+    display: grid;
+    gap: 10px;
+}
+
+.method {
+    padding: 15px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.method:hover {
+    border-color: #f5c542;
+}
+
+.method strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.method small {
+    color: #94a3b8;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #f5c542;
+    color: #111827;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #ffd75a;
+}
+
+.note {
+    background: #111827;
+    border-radius: 10px;
+    padding: 14px;
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.footer {
+    text-align: center;
+    color: #64748b;
+    padding: 25px;
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">TAJ TRADE</div>
+    <a class="back" href="dashboard.html">العودة إلى الحساب ←</a>
+</header>
+
+<main class="container">
+
+    <div class="title">
+        <h1>إيداع الأموال</h1>
+        <p>أضف رصيدًا إلى محفظتك بطريقة آمنة</p>
+    </div>
+
+    <div class="card">
+
+        <div class="balance">
+            <span>الرصيد الحالي</span>
+            <span id="balance">0.00 USD</span>
+        </div>
+
+        <h2>بيانات الإيداع</h2>
+
+        <label for="amount">مبلغ الإيداع</label>
+        <input
+            type="number"
+            id="amount"
+            placeholder="أدخل المبلغ"
+            min="1"
+            step="0.01"
+        >
+
+        <label>طريقة الإيداع</label>
+
+        <div class="methods">
+
+            <div class="method" onclick="selectMethod('البطاقة البنكية')">
+                <strong>💳 البطاقة البنكية</strong>
+                <small>Visa / Mastercard</small>
+            </div>
+
+            <div class="method" onclick="selectMethod('التحويل البنكي')">
+                <strong>🏦 التحويل البنكي</strong>
+                <small>تحويل مباشر إلى حساب المنصة</small>
+            </div>
+
+            <div class="method" onclick="selectMethod('العملات الرقمية')">
+                <strong>₿ العملات الرقمية</strong>
+                <small>إيداع باستخدام العملات الرقمية</small>
+            </div>
+
+        </div>
+
+        <input type="hidden" id="method">
+
+        <button onclick="deposit()">متابعة الإيداع</button>
+
+    </div>
+
+    <div class="card">
+        <h2>معلومات مهمة</h2>
+
+        <div class="note">
+            جميع طلبات الإيداع تخضع للمراجعة قبل إضافة الرصيد إلى الحساب.
+            تأكد من إدخال المبلغ والطريقة الصحيحة قبل إرسال الطلب.
+        </div>
+    </div>
+
+</main>
+
+<div class="footer">
+    © 2026 TAJ TRADE — جميع الحقوق محفوظة
+</div>
+
+<script>
+
+function selectMethod(method) {
+    document.getElementById("method").value = method;
+
+    alert("تم اختيار: " + method);
+}
+
+function deposit() {
+
+    const amount = document.getElementById("amount").value;
+    const method = document.getElementById("method").value;
+
+    if (!amount || Number(amount) <= 0) {
+        alert("يرجى إدخال مبلغ صحيح.");
+        return;
+    }
+
+    if (!method) {
+        alert("يرجى اختيار طريقة الإيداع.");
+        return;
+    }
+
+    alert(
+        "تم إرسال طلب الإيداع بقيمة " +
+        amount +
+        " USD عبر " +
+        method +
+        "."
+    );
+}
+
+</script>
+
+</body>
+</html>
