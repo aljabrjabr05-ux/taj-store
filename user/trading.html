@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>التداول - TAJ TRADE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #080e19;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .header {
+            height: 65px;
+            background: #111a2e;
+            border-bottom: 1px solid #263451;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #f5c542;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .back {
+            color: #dce4f5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back:hover {
+            color: #f5c542;
+        }
+
+        .container {
+            max-width: 1250px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 15px;
+        }
+
+        .title h1 {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .title p {
+            color: #8e9bb5;
+            font-size: 13px;
+        }
+
+        .balance {
+            background: #111a2e;
+            border: 1px solid #263451;
+            border-radius: 10px;
+            padding: 12px 18px;
+            text-align: center;
+        }
+
+        .balance span {
+            color: #8e9bb5;
+            font-size: 11px;
+        }
+
+        .balance strong {
+            display: block;
+            margin-top: 5px;
+            color: #f5c542;
+            font-size: 18px;
+        }
+
+        .market {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 18px;
+        }
+
+        .chart-box,
+        .order-box,
+        .positions {
+            background: #111a2e;
+            border: 1px solid #263451;
+            border-radius: 14px;
+        }
+
+        .chart-header {
+            padding: 15px;
+            border-bottom: 1px solid #263451;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pair {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .price {
+            color: #35d07f;
+            font-weight: bold;
+        }
+
+        .chart {
+            height: 420px;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+
+            background-size: 50px 50px;
+        }
+
+        .chart-line {
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 50%;
+            height: 3px;
+            background: #35d07f;
+            transform: rotate(-7deg);
+
+            box-shadow:
+                60px -25px 0 -1px #35d07f,
+                120px 10px 0 -1px #35d07f,
+                180px -40px 0 -1px #35d07f,
+                240px -10px 0 -1px #35d07f,
+                300px -70px 0 -1px #35d07f,
+                360px -30px 0 -1px #35d07f,
+                420px -95px 0 -1px #35d07f;
+        }
+
+        .chart-note {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: #68758e;
+            font-size: 11px;
+        }
+
+        .order-box {
+            padding: 18px;
+        }
+
+        .order-title {
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 18px;
+        }
+
+        .tab {
+            border: none;
+            padding: 11px;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #1b2740;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .tab.buy {
+            background: #1c8f5a;
+        }
+
+        .field {
+            margin-bottom: 13px;
+        }
+
+        .field label {
+            display: block;
+            color: #8e9bb5;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 7px;
+            border: 1px solid #31405d;
+            background: #0b1220;
+            color: #ffffff;
+            outline: none;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: #f5c542;
+        }
+
+        .order-button {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            background: #1c8f5a;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .warning {
+            margin-top: 12px;
+            padding: 10px;
+            background: #191f2c;
+            border-radius: 7px;
+            color: #8e9bb5;
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .positions {
+            margin-top: 18px;
+            overflow: hidden;
+        }
+
+        .positions-header {
+            padding: 16px;
+            border-bottom: 1px solid #263451;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 35px;
+            color: #68758e;
+            font-size: 13px;
+        }
+
+        .empty-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #68758e;
+            font-size: 11px;
+            padding: 25px;
+        }
+
+        @media (max-width: 850px) {
+            .market {
+                grid-template-columns: 1fr;
+            }
+
+            .chart {
+                height: 330px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                padding: 12px;
+            }
+
+            .top-bar {
+                align-items: flex-start;
+            }
+
+            .title h1 {
+                font-size: 21px;
+            }
+
+            .balance {
+                padding: 9px;
+            }
+
+            .balance strong {
+                font-size: 15px;
+            }
+
+            .chart {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        TAJ TRADE
+    </div>
+
+    <a href="dashboard.html" class="back">
+        ← العودة إلى لوحة التحكم
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <div class="top-bar">
+
+        <div class="title">
+            <h1>منصة التداول</h1>
+            <p>تداول الأصول من خلال حسابك في TAJ TRADE</p>
+        </div>
+
+        <div class="balance">
+            <span>الرصيد المتاح</span>
+            <strong>$0.00</strong>
+        </div>
+
+    </div>
+
+
+    <div class="market">
+
+        <section class="chart-box">
+
+            <div class="chart-header">
+
+                <div class="pair">
+                    BTC / USDT
+                </div>
+
+                <div class="price">
+                    $67,250.00
+                </div>
+
+            </div>
+
+            <div class="chart">
+
+                <div class="chart-line"></div>
+
+                <div class="chart-note">
+                    الرسم البياني التجريبي
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="order-box">
+
+            <div class="order-title">
+                إنشاء أمر تداول
+            </div>
+
+            <div class="tabs">
+
+                <button
+                    class="tab buy"
+                    onclick="setOrder('buy')">
+                    شراء
+                </button>
+
+                <button
+                    class="tab"
+                    onclick="setOrder('sell')">
+                    بيع
+                </button>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>الأصل</label>
+
+                <select>
+                    <option>BTC / USDT</option>
+                    <option>ETH / USDT</option>
+                    <option>BNB / USDT</option>
+                    <option>XRP / USDT</option>
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>نوع الأمر</label>
+
+                <select>
+                    <option>أمر سوق</option>
+                    <option>أمر محدد</option>
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>السعر</label>
+
+                <input
+                    type="number"
+                    id="price"
+                    value="67250"
+                    placeholder="أدخل السعر">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>الكمية</label>
+
+                <input
+                    type="number"
+                    id="amount"
+                    value="0"
+                    min="0"
+                    step="0.0001"
+                    placeholder="أدخل الكمية">
+
+            </div>
+
+
+            <button
+                class="order-button"
+                onclick="placeOrder()">
+
+                شراء BTC
+
+            </button>
+
+
+            <div class="warning">
+                هذه الواجهة تجريبية حاليًا.
+                لن يتم تنفيذ أي عملية مالية حقيقية.
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <section class="positions">
+
+        <div class="positions-header">
+            <strong>الصفقات المفتوحة</strong>
+        </div>
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                📊
+            </div>
+
+            لا توجد صفقات مفتوحة حاليًا
+
+        </div>
+
+    </section>
+
+
+    <div class="footer">
+        © 2026 TAJ TRADE — جميع الحقوق محفوظة
+    </div>
+
+</main>
+
+
+<script>
+
+    let orderType = "buy";
+
+    function setOrder(type) {
+
+        orderType = type;
+
+        const buttons = document.querySelectorAll(".tab");
+
+        buttons.forEach(button => {
+            button.classList.remove("buy");
+        });
+
+        if (type === "buy") {
+
+            buttons[0].classList.add("buy");
+
+            document.querySelector(".order-button").innerText =
+                "شراء BTC";
+
+            document.querySelector(".order-button").style.background =
+                "#1c8f5a";
+
+        } else {
+
+            buttons[1].classList.add("buy");
+
+            document.querySelector(".order-button").innerText =
+                "بيع BTC";
+
+            document.querySelector(".order-button").style.background =
+                "#c0394b";
+        }
+    }
+
+
+    function placeOrder() {
+
+        const amount =
+            document.getElementById("amount").value;
+
+        if (!amount || Number(amount) <= 0) {
+
+            alert("يرجى إدخال كمية صحيحة.");
+
+            return;
+        }
+
+        alert(
+            "هذه نسخة تجريبية من منصة TAJ TRADE.\n\n" +
+            "لم يتم تنفيذ أي عملية مالية حقيقية."
+        );
+    }
+
+</script>
+
+</body>
+</html>
